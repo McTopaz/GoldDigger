@@ -213,7 +213,17 @@ namespace GoldDiggerApi
 
         void End()
         {
-
+            ValueCardsToWinner();
         }
+
+        void ValueCardsToWinner()
+        {
+            var valuale = Players.Where(p => p != Winner)
+                .Select(l => l.Current)
+                .Where(c => c.Rank == Ranks.Ace || c.Rank == Ranks.Ten || c.Rank == Ranks.Queen || c.Rank == Ranks.King);
+            Winner.Stash.AddRange(valuale);
+        }
+
+
     }
 }
