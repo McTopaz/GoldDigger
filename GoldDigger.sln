@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiggerApi", "GoldDiggerApi\GoldDiggerApi.csproj", "{83DC783E-57F2-4358-8472-59B38E8791F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldDiggerApi", "GoldDiggerApi\GoldDiggerApi.csproj", "{83DC783E-57F2-4358-8472-59B38E8791F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiggerConsole", "GoldDiggerConsole\GoldDiggerConsole.csproj", "{20010BAC-8748-4C55-AD43-0805B72F2571}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldDiggerConsole", "GoldDiggerConsole\GoldDiggerConsole.csproj", "{20010BAC-8748-4C55-AD43-0805B72F2571}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
