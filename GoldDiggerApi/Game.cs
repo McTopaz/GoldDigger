@@ -56,13 +56,31 @@ namespace GoldDiggerApi
         {
             while(Deck.Cards.Count() > 0)
             {
+                UpdateGameStatus();
                 var turn = new Turn(Players);
                 turn.Play();
 
+                UpdatePoints();
                 Deck.OneCardToEachPlayer(Players);
             }
 
             CalculateWinner();
+        }
+
+        void UpdateGameStatus()
+        {
+            foreach (var player in Players)
+            {
+                player.Client.UpdateGameStatus(Players);
+            }
+        }
+
+        void UpdatePoints()
+        {
+            foreach (var player in Players)
+            {
+                player.SummarizePoints();
+            }
         }
 
         void CalculateWinner()

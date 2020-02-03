@@ -12,6 +12,7 @@ namespace GoldDiggerApi
 
         public bool IsGoldDigger { get; private set; }
         public bool IsBigGoldDigger { get; private set; }
+        public bool IsValueCard { get; private set; }
 
         public Card(Suits suit, Ranks rank, int points = 0)
         {
@@ -21,6 +22,7 @@ namespace GoldDiggerApi
 
             IsGoldDigger = Rank == Ranks.Jack;
             IsBigGoldDigger = Suit == Suits.Spades && Rank == Ranks.Jack;
+            IsValueCard = Rank == Ranks.Ace || Rank == Ranks.Ten || Rank == Ranks.Jack || Rank == Ranks.Queen || Rank == Ranks.King;
         }
 
         public override string ToString()

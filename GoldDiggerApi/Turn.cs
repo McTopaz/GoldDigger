@@ -8,6 +8,7 @@ namespace GoldDiggerApi
     class Turn
     {
         IEnumerable<Player> Players { get; set; }
+        Deck Deck { get; set; }
         Player Winner { get; set; } = new NoPlayer();
 
         public Turn(IEnumerable<Player> players)
@@ -28,7 +29,7 @@ namespace GoldDiggerApi
 
             // Let the first player choose a card as the ruling card.
             var firstPlayer = players.First();
-            FirstPlayer(firstPlayer);
+            FirstPlayer(players.First());
 
             // Let the other players choose their cards.
             players = players.Skip(1);
@@ -41,8 +42,7 @@ namespace GoldDiggerApi
         void FirstPlayer(Player player)
         {
             var cards = player.Cards.Select(c => (Available: true, Card: c));
-            var card = player.LetPlayerChooseCard(cards);
-            player.IsFirstPlayer = true;
+            var card = player.Client.ChooseCard(cards);
             player.Current = card;
         }
 
@@ -61,7 +61,7 @@ namespace GoldDiggerApi
                 cards = player.Cards.Select(c => (Available: matching.Contains(c), Card: c));
             }
 
-            var card = player.LetPlayerChooseCard(cards);
+            var card = player.Client.ChooseCard(cards);
             player.Current = card;
         }
 
@@ -82,7 +82,7 @@ namespace GoldDiggerApi
             if (end) return;
 
             // No other players´ cards could beat the first player.
-            Winner = Players.First(p => p.IsFirstPlayer);
+            Winner = Players.First();
         }
 
         /// <summary>
@@ -91,9 +91,10 @@ namespace GoldDiggerApi
         /// <returns></returns>
         bool BigGoldDigger()
         {
-            var ownsBigGoldDigger = Players.First(p => p.Current.IsBigGoldDigger);
-            if (ownsBigGoldDigger != null)
+            var has = Players.Any(p => p.Current.IsBigGoldDigger);
+            if (has)
             {
+                var ownsBigGoldDigger = Players.Where(p => p.Current.IsBigGoldDigger).First();
                 Winner = ownsBigGoldDigger;
                 return true;
             }
@@ -113,7 +114,7 @@ namespace GoldDiggerApi
             if (end) return true;
 
             // Second, third or forth player has gold diggers.
-            var hasGoldDiggers = Players.Where(p => p.Current.IsGoldDigger);
+            var hasGoldDiggers = Players.Skip(1).Where(p => p.Current.IsGoldDigger);
 
             // There is only one player with a gold digger.
             if (hasGoldDiggers.Count() == 1)
@@ -141,9 +142,9 @@ namespace GoldDiggerApi
         /// <returns></returns>
         bool FirstPlayerWithGoldDigger()
         {
-            if (Players.Any(p => p.IsFirstPlayer && p.Current.IsGoldDigger))
+            if (Players.First().Current.IsGoldDigger)
             {
-                Winner = Players.First(p => p.IsFirstPlayer);
+                Winner = Players.First();
                 return true;
             }
             return false;
@@ -156,7 +157,7 @@ namespace GoldDiggerApi
         /// <returns></returns>
         bool GoldDiggerMatchingSuit(IEnumerable<Player> hasGoldDiggers)
         {
-            var rulingSuit = Players.First(p => p.IsFirstPlayer).Current.Suit;
+            var rulingSuit = Players.First().Current.Suit;
             var temp = hasGoldDiggers.First(p => p.Current.Suit == rulingSuit);
             if (temp != null)
             {
@@ -191,7 +192,7 @@ namespace GoldDiggerApi
         /// <returns></returns>
         bool HighestCardSameSuit()
         {
-            var rulingSuit = Players.First(p => p.IsFirstPlayer).Current.Suit;
+            var rulingSuit = Players.First().Current.Suit;
             var playersWithSuit = Players.Where(p => p.Current.Suit == rulingSuit);
 
             // No other player has a card with the same suit as the first player.
@@ -213,17 +214,34 @@ namespace GoldDiggerApi
 
         void End()
         {
-            ValueCardsToWinner();
+            StoreWinnersCard();
+            StoreLosersCards();
+            DiscardCards();
         }
 
-        void ValueCardsToWinner()
+        void StoreWinnersCard()
+        {
+            if (Winner.Current.IsValueCard)
+            {
+                Winner.Stash.Add(Winner.Current);
+            }
+        }
+
+        void StoreLosersCards()
         {
             var valuale = Players.Where(p => p != Winner)
                 .Select(l => l.Current)
-                .Where(c => c.Rank == Ranks.Ace || c.Rank == Ranks.Ten || c.Rank == Ranks.Queen || c.Rank == Ranks.King);
+                .Where(c => c.IsValueCard);
             Winner.Stash.AddRange(valuale);
         }
 
-
+        void DiscardCards()
+        {
+            foreach (var player in Players)
+            {
+                player.Cards.Remove(player.Current);
+                player.Current = new NoCard();
+            }
+        }
     }
 }

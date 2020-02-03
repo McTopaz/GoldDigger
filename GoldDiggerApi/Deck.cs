@@ -15,13 +15,8 @@ namespace GoldDiggerApi
 
         internal void AdjustForThreePlayers()
         {
-            var list = Cards.ToList();
-
-            // Get clubs of two.
-            // Remove the clubs of two from the deck,
-            var item = list.Single(c => c.Suit == Suits.Clubs && c.Rank == Ranks.Two);
-            list.Remove(item);
-
+            // Remove the clubs of two from the deck.
+            var list = Cards.Where(c => (c.Suit != Suits.Clubs || c.Rank != Ranks.Two));
             Cards = new Stack<Card>(list);
         }
 
@@ -33,9 +28,9 @@ namespace GoldDiggerApi
 
             for (int i = length; i > 0; --i)
             {
-                var r = random.Next(length+1);
-                var temp = deck[i];
-                deck[i] = deck[r];
+                var r = random.Next(length-1);
+                var temp = deck[i-1];
+                deck[i-1] = deck[r];
                 deck[r] = temp;
             }
 
@@ -44,6 +39,11 @@ namespace GoldDiggerApi
 
         internal void OneCardToEachPlayer(IEnumerable<Player> players)
         {
+            if (Cards.Count() < players.Count())
+            {
+                return;
+            }
+
             foreach (var player in players)
             {
                 var card = Cards.Pop();
