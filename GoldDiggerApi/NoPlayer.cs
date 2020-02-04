@@ -6,7 +6,7 @@ namespace GoldDiggerApi
 {
     class NoPlayer : Player
     {
-        public NoPlayer() : base (TurnTaking.First)
+        public NoPlayer() : base ("")
         {
         }
     }

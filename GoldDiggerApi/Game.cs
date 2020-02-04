@@ -21,9 +21,18 @@ namespace GoldDiggerApi
 
         void Setup()
         {
+            RandomTurnTaking();
             NumberOfPlayerControl();
             Deck.Shuffle();
             HandOutInitialCards();
+        }
+
+        void RandomTurnTaking()
+        {
+            var random = new Random();
+            int index = random.Next(Players.Count());
+            var first = Players.ElementAt(index);
+            FirstAtNextTurn(first);
         }
 
         void NumberOfPlayerControl()
@@ -45,10 +54,9 @@ namespace GoldDiggerApi
 
         void HandOutInitialCards()
         {
-            var players = Players.OrderBy(p => p.TurnTaking);
             for (int i = 0; i < MaxCardsOnHand; i++)
             { 
-                Deck.OneCardToEachPlayer(players);
+                Deck.OneCardToEachPlayer(Players);
             }
         }
 
@@ -56,22 +64,24 @@ namespace GoldDiggerApi
         {
             while(Deck.Cards.Count() > 0)
             {
-                UpdateGameStatus();
+                GameStatus();
                 var turn = new Turn(Players);
                 turn.Play();
 
                 UpdatePoints();
                 Deck.OneCardToEachPlayer(Players);
+                FirstAtNextTurn(turn.Winner);
             }
 
             CalculateWinner();
+            EndGame();
         }
 
-        void UpdateGameStatus()
+        void GameStatus()
         {
             foreach (var player in Players)
             {
-                player.Client.UpdateGameStatus(Players);
+                player.Client.NotifyGameStatus(Players, Deck.Cards.Count());
             }
         }
 
@@ -83,16 +93,25 @@ namespace GoldDiggerApi
             }
         }
 
+        void FirstAtNextTurn(Player first)
+        {
+            var list = new List<Player>();
+            list.Add(first);
+            list.AddRange(Players.Where(p => p != first));
+            Players = list;
+        }
+
         void CalculateWinner()
         {
             Winner = Players.Aggregate((p1, p2) => p1.Points > p2.Points ? p1 : p2);
+            Winner.IsWinner = true;
         }
 
         void EndGame()
         {
             foreach (var player in Players)
             {
-                player.Client.
+                player.Client.NotifyEndGame(Players);
             }
         }
     }

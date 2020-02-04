@@ -9,7 +9,7 @@ namespace GoldDiggerApi
     {
         IEnumerable<Player> Players { get; set; }
         Deck Deck { get; set; }
-        Player Winner { get; set; } = new NoPlayer();
+        internal Player Winner { get; set; } = new NoPlayer();
 
         public Turn(IEnumerable<Player> players)
         {
@@ -25,7 +25,7 @@ namespace GoldDiggerApi
 
         void SelectPlayCard()
         {
-            var players = Players.OrderBy(p => p.TurnTaking) as IEnumerable<Player>;
+            var players = Players as IEnumerable<Player>;
 
             // Let the first player choose a card as the ruling card.
             var firstPlayer = players.First();
@@ -42,8 +42,9 @@ namespace GoldDiggerApi
         void FirstPlayer(Player player)
         {
             var cards = player.Cards.Select(c => (Available: true, Card: c));
-            var card = player.Client.ChooseCard(cards);
+            var card = player.Client.NotifySelectCard(player.Name, cards);
             player.Current = card;
+            PlayerHasSelctedCard(player);
         }
 
         void OtherPlayers(Player player, Card firstPlayerCard)
@@ -61,8 +62,17 @@ namespace GoldDiggerApi
                 cards = player.Cards.Select(c => (Available: matching.Contains(c), Card: c));
             }
 
-            var card = player.Client.ChooseCard(cards);
+            var card = player.Client.NotifySelectCard(player.Name, cards);
             player.Current = card;
+            PlayerHasSelctedCard(player);
+        }
+
+        void PlayerHasSelctedCard(Player thePlayer)
+        {
+            foreach (var player in Players)
+            {
+                player.Client.NotifyPlayerHasSelectedCard(thePlayer);
+            }
         }
 
         void CompareCards()
@@ -92,13 +102,18 @@ namespace GoldDiggerApi
         bool BigGoldDigger()
         {
             var has = Players.Any(p => p.Current.IsBigGoldDigger);
-            if (has)
-            {
-                var ownsBigGoldDigger = Players.Where(p => p.Current.IsBigGoldDigger).First();
-                Winner = ownsBigGoldDigger;
-                return true;
-            }
-            return false;
+            Winner = has ? Players.First(p => p.Current.IsBigGoldDigger) : Winner;
+            return !(Winner is NoPlayer);
+            //return Winner.GetType() != typeof(NoPlayer);
+
+            //var has = Players.Any(p => p.Current.IsBigGoldDigger);
+            //if (has)
+            //{
+            //    var ownsBigGoldDigger = Players.Where(p => p.Current.IsBigGoldDigger).First();
+            //    Winner = ownsBigGoldDigger;
+            //    return true;
+            //}
+            //return false;
         }
 
         /// <summary>
@@ -158,10 +173,10 @@ namespace GoldDiggerApi
         bool GoldDiggerMatchingSuit(IEnumerable<Player> hasGoldDiggers)
         {
             var rulingSuit = Players.First().Current.Suit;
-            var temp = hasGoldDiggers.First(p => p.Current.Suit == rulingSuit);
-            if (temp != null)
+            var has = hasGoldDiggers.Any(p => p.Current.Suit == rulingSuit);
+            if (has)
             {
-                Winner = temp;
+                Winner = hasGoldDiggers.First(p => p.Current.Suit == rulingSuit);
                 return true;
             }
             return false;
@@ -216,6 +231,8 @@ namespace GoldDiggerApi
         {
             StoreWinnersCard();
             StoreLosersCards();
+            Winner.SummarizePoints();
+            EndOfTurn();
             DiscardCards();
         }
 
@@ -233,6 +250,17 @@ namespace GoldDiggerApi
                 .Select(l => l.Current)
                 .Where(c => c.IsValueCard);
             Winner.Stash.AddRange(valuale);
+        }
+
+        void EndOfTurn()
+        {
+            foreach (var player in Players)
+            {
+                var name = Winner.Name;
+                var points = Players.Select(p => p.Current).Sum(c => c.Points);
+                var winner = (name, points);
+                player.Client.NotifyEndOfTurn(winner, Players.Select(p => p.Current));
+            }
         }
 
         void DiscardCards()

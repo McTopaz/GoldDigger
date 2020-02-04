@@ -10,9 +10,6 @@ namespace GoldDiggerApi
         {
         }
 
-        public override string ToString()
-        {
-            return "No card";
-        }
+        public override string ToString() => "No card";
     }
 }

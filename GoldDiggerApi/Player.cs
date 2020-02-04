@@ -5,19 +5,20 @@ using System.Text;
 
 namespace GoldDiggerApi
 {
-    public abstract class Player : Hand, PlayerStatus
+    public abstract class Player : PlayerStatus
     {
         public Client Client { get; private set; } = new Client();
 
+        public string Name { get; private set; }
         internal List<Card> Cards { get; set; } = new List<Card>();
         public List<Card> Stash { get; internal set; } = new List<Card>();
         public int Points { get; private set; } = 0;
-        public TurnTaking TurnTaking { get; internal set; }
         public Card Current { get; internal set; } = new NoCard();
+        public bool IsWinner { get; internal set; }
 
-        public Player(TurnTaking turnTaking)
+        public Player(string name)
         {
-            TurnTaking = turnTaking;
+            Name = name;
         }
 
         internal void SummarizePoints()
@@ -26,17 +27,12 @@ namespace GoldDiggerApi
         }
     }
 
-    public interface Hand
-    {
-        //event Func<IEnumerable<(bool Available, Card Card)>, Card> SelectCard;
-        Card Current { get; }
-    }
-
     public interface PlayerStatus
     {
+        string Name { get; }
         Card Current { get; }
         List<Card> Stash { get; }
-        TurnTaking TurnTaking { get; }
         int Points { get; }
+        bool IsWinner { get; }
     }
 }

@@ -25,10 +25,7 @@ namespace GoldDiggerApi
             IsValueCard = Rank == Ranks.Ace || Rank == Ranks.Ten || Rank == Ranks.Jack || Rank == Ranks.Queen || Rank == Ranks.King;
         }
 
-        public override string ToString()
-        {
-            return $"{Suit}-{Rank}";
-        }
+        public override string ToString() => $"{Suit}-{Rank}";
     }
 }
 

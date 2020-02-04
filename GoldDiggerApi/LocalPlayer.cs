@@ -4,9 +4,9 @@ using System.Text;
 
 namespace GoldDiggerApi
 {
-    public class Computer : Player
+    public class LocalPlayer : Player
     {
-        public Computer(TurnTaking turnTaking) : base(turnTaking)
+        public LocalPlayer(string name) : base (name)
         {
         }
     }
