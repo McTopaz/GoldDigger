@@ -85,12 +85,15 @@ namespace GoldDiggerApi
 
         void CalculateWinner()
         {
+            Winner = Players.Aggregate((p1, p2) => p1.Points > p2.Points ? p1 : p2);
+        }
+
+        void EndGame()
+        {
             foreach (var player in Players)
             {
-                player.SummarizePoints();
+                player.Client.
             }
-
-            Winner = Players.Aggregate((p1, p2) => p1.Points > p2.Points ? p1 : p2);
         }
     }
 }
