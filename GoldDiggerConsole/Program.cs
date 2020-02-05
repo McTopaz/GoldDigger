@@ -45,6 +45,7 @@ namespace GoldDiggerConsole
 
             foreach (var item in obj)
             {
+                Console.WriteLine($"\tName:\t\t{item.Name}");
                 Console.WriteLine($"\tWinner:\t\t{item.IsWinner}");
                 Console.WriteLine($"\tPoints:\t\t{item.Points}");
                 Console.WriteLine($"\tStash:\t\t{string.Join(" ", item.Stash)}");

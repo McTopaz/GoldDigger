@@ -24,7 +24,7 @@ namespace GoldDiggerApi
             RandomTurnTaking();
             NumberOfPlayerControl();
             Deck.Shuffle();
-            HandOutInitialCards();
+            HandoutInitialCards();
         }
 
         void RandomTurnTaking()
@@ -52,7 +52,7 @@ namespace GoldDiggerApi
             }
         }
 
-        void HandOutInitialCards()
+        void HandoutInitialCards()
         {
             for (int i = 0; i < MaxCardsOnHand; i++)
             { 
@@ -60,16 +60,21 @@ namespace GoldDiggerApi
             }
         }
 
+        void HandoutCards()
+        {
+            if (Deck.Cards.Count() == 0) return;
+            Deck.OneCardToEachPlayer(Players);
+        }
+
         public void Play()
         {
-            while(Deck.Cards.Count() > 0)
+            while(Players.Sum(p => p.Cards.Count()) > 0)
             {
                 GameStatus();
                 var turn = new Turn(Players);
                 turn.Play();
-
                 UpdatePoints();
-                Deck.OneCardToEachPlayer(Players);
+                HandoutCards();
                 FirstAtNextTurn(turn.Winner);
             }
 
