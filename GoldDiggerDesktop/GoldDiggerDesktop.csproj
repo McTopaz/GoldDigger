@@ -4,14 +4,33 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Card128.png" />
+    <None Remove="Images\Cards128.png" />
+    <None Remove="Images\IpAddress32.png" />
+    <None Remove="Images\Network16.png" />
+    <None Remove="Images\NetworkCard128.png" />
+    <None Remove="Images\Port32.png" />
+    <None Remove="Images\Tag64.png" />
+    <None Remove="Images\User24.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Resource Include="Images\Card128.png" />
+    <Resource Include="Images\Cards128.png" />
+    <Resource Include="Images\IpAddress32.png" />
+    <Resource Include="Images\Network16.png" />
+    <Resource Include="Images\NetworkCard128.png" />
+    <Resource Include="Images\Port32.png" />
+    <Resource Include="Images\Tag64.png" />
+    <Resource Include="Images\User24.png" />
   </ItemGroup>
 
 </Project>

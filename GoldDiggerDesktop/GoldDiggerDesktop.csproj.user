@@ -13,6 +13,9 @@
     <Compile Update="Views\FourPlayers.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\HostGame.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\LowerPlayerArea.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\FourPlayers.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\HostGame.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\LowerPlayerArea.xaml">

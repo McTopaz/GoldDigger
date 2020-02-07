@@ -27,7 +27,18 @@ namespace GoldDiggerDesktop
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            var view = Container.Content as Views.NewGame;
+            var vm = view.DataContext as ViewModels.vmNewGame;
+            vm.ShowContent = DisplayContent;
+        }
 
+        private void DisplayContent(UserControl view)
+        {
+            var vm = view.DataContext as ViewModels.vmBase;
+            vm.ShowContent = DisplayContent;
+            Container.Content = view;
+            view.VerticalAlignment = VerticalAlignment.Center;
+            view.HorizontalAlignment = HorizontalAlignment.Center;
         }
     }
 }
