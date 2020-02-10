@@ -27,7 +27,7 @@ namespace GoldDiggerDesktop.ViewModels
 
         private void Host_Callback(object parameter = null)
         {
-            ShowContent(new Views.HostGame());
+            ShowContent(new Views.HostSetup());
         }
 
         private void Join_Callback(object parameter = null)

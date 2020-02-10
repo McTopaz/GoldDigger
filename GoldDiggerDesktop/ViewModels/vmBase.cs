@@ -8,5 +8,6 @@ namespace GoldDiggerDesktop.ViewModels
     abstract class vmBase
     {
         public Action<UserControl> ShowContent;
+        public vmBase Previously { get; set; }
     }
 }

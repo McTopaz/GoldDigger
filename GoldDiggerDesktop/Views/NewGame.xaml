@@ -26,7 +26,8 @@
                     <Button Command="{Binding Host}" Width="250" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Height="80" >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image />
+                                <Image Source="/GoldDiggerDesktop;component/Images/Host64.png" Height="32" />
+                                <Separator Visibility="Hidden" Width="16" />
                                 <TextBlock Text="Host game" FontSize="30" FontWeight="Bold" Foreground="Black" />
                             </StackPanel>
                         </Button.Content>
@@ -40,8 +41,9 @@
                     <Button Command="{Binding Join}" Width="250" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Height="80" >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image />
-                                <TextBlock Text="Join game" FontSize="30" FontWeight="Bold" Foreground="White" />
+                                <Image Source="/GoldDiggerDesktop;component/Images/Client64.png" Height="32" />
+                                <Separator Visibility="Hidden" Width="16" />
+                                <TextBlock Text="Join game" FontSize="30" FontWeight="Bold" Foreground="Black" />
                             </StackPanel>
                         </Button.Content>
                     </Button>
@@ -54,8 +56,9 @@
                     <Button Command="{Binding Exit}" Width="250" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Height="80" >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image />
-                                <TextBlock Text="Exit" FontSize="30" FontWeight="Bold" Foreground="Gray" />
+                                <Image Source="/GoldDiggerDesktop;component/Images/Exit64.png" Height="32" />
+                                <Separator Visibility="Hidden" Width="16" />
+                                <TextBlock Text="Exit" FontSize="30" FontWeight="Bold" Foreground="Black" />
                             </StackPanel>
                         </Button.Content>
                     </Button>

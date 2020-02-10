@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace GoldDiggerDesktop.Views
 {
     /// <summary>
-    /// Interaction logic for HostGame.xaml
+    /// Interaction logic for HostMenu.xaml
     /// </summary>
-    public partial class HostGame : UserControl
+    public partial class HostMenu : UserControl
     {
-        public HostGame()
+        public HostMenu()
         {
             InitializeComponent();
         }

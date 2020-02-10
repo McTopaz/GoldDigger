@@ -10,7 +10,7 @@ using GoldDiggerDesktop.Misc;
 
 namespace GoldDiggerDesktop.ViewModels
 {
-    class vmHostGame : vmBase
+    class vmHostSetup : vmBase
     {
         public IEnumerable<IPAddress> NetworkCards { get; private set; }
         public IPAddress IpAddress { get; set; }
@@ -20,7 +20,7 @@ namespace GoldDiggerDesktop.ViewModels
         public RelayCommand Host { get; private set; } = new RelayCommand();
         public RelayCommand Back { get; private set; } = new RelayCommand();
 
-        public vmHostGame()
+        public vmHostSetup()
         {
             NetworkAdapters();
             DefaultIpAddress();
@@ -31,6 +31,18 @@ namespace GoldDiggerDesktop.ViewModels
 
         private void Host_Callback(object parameter = null)
         {
+            var view = new Views.HostMenu();
+            var vm = view.DataContext as vmHostMenu;
+
+            vm.Previously = this;
+            vm.Host = new Player()
+            {
+                EndPoint = new IPEndPoint(IpAddress, Port),
+                Name = Name,
+            };
+            vm.Host.Remove.Enable = _ => false;
+
+            ShowContent(view);
         }
 
         private void Back_Callback(object parameter = null)
