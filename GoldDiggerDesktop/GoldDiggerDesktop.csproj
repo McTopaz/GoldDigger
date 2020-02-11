@@ -8,15 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\ApplicationAndroid.png" />
+    <None Remove="Images\ApplicationApi.png" />
+    <None Remove="Images\ApplicationDesktop.png" />
     <None Remove="Images\Back.png" />
     <None Remove="Images\Back64.png" />
     <None Remove="Images\Card128.png" />
     <None Remove="Images\Cards128.png" />
-    <None Remove="Images\Client64.png" />
     <None Remove="Images\Exit64.png" />
+    <None Remove="Images\Guest64.png" />
     <None Remove="Images\Host64.png" />
     <None Remove="Images\Icon128.png" />
     <None Remove="Images\IpAddress32.png" />
+    <None Remove="Images\Minus.png" />
     <None Remove="Images\Minus32.png" />
     <None Remove="Images\Monitor32.png" />
     <None Remove="Images\Monitor64.png" />
@@ -34,10 +38,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GoldDiggerApi\GoldDiggerApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\ApplicationApi.png" />
+    <Resource Include="Images\ApplicationDesktop.png" />
     <Resource Include="Images\Back64.png" />
     <Resource Include="Images\Card128.png" />
     <Resource Include="Images\Cards128.png" />
-    <Resource Include="Images\Client64.png" />
+    <Resource Include="Images\Guest64.png" />
     <Resource Include="Images\Exit64.png" />
     <Resource Include="Images\Host64.png" />
     <Resource Include="Images\Icon128.png" />
@@ -50,21 +60,6 @@
     <Resource Include="Images\Type64.png" />
     <Resource Include="Images\User24.png" />
     <Resource Include="Images\UserRemove24.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Resource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Resource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

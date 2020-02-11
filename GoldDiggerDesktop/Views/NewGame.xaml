@@ -19,7 +19,7 @@
             <StackPanel Orientation="Vertical">
                 
                 <!-- Title -->
-                <TextBlock Text="Gold Digger" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" Margin="20" Foreground="Gold" />
+                <TextBlock Text="Gold Digger" Foreground="Gold" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" Margin="20" />
                 
                 <!-- Host -->
                 <Border Background="OrangeRed" BorderThickness="0" CornerRadius="8,8,8,8" Width="250">
@@ -41,7 +41,7 @@
                     <Button Command="{Binding Join}" Width="250" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Height="80" >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="/GoldDiggerDesktop;component/Images/Client64.png" Height="32" />
+                                <Image Source="/GoldDiggerDesktop;component/Images/Guest64.png" Height="32" />
                                 <Separator Visibility="Hidden" Width="16" />
                                 <TextBlock Text="Join game" FontSize="30" FontWeight="Bold" Foreground="Black" />
                             </StackPanel>

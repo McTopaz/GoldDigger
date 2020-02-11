@@ -27,12 +27,12 @@ namespace GoldDiggerDesktop.ViewModels
 
         private void Host_Callback(object parameter = null)
         {
-            ShowContent(new Views.HostSetup());
+            ShowContent(new Views.HostGame());
         }
 
         private void Join_Callback(object parameter = null)
         {
-            Console.WriteLine("");
+            ShowContent(new Views.JoinGame());
         }
 
         private void Exit_Callback(object parameter = null)

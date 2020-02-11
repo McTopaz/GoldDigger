@@ -1,0 +1,175 @@
+﻿<UserControl x:Class="GoldDiggerDesktop.Views.HostGameSummary"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GoldDiggerDesktop.Views"
+             xmlns:vm="clr-namespace:GoldDiggerDesktop.ViewModels"
+             xmlns:misc="clr-namespace:GoldDiggerDesktop.Misc"
+             mc:Ignorable="d"
+             Width="700"
+             d:DesignHeight="550" d:DesignWidth="700">
+
+    <UserControl.DataContext>
+        <vm:vmHostGameSummary />
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <misc:StreamToImage x:Key="StreamToImage" />
+        <Style TargetType="Control" x:Key="HeaderStyle">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Control" x:Key="FontStyle">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Rectangle Margin="10,10,0,0" Fill="DarkGray" RadiusX="8" RadiusY="8"/>
+        <Border Margin="4" BorderBrush="White" Background="SaddleBrown" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8">
+            
+            <StackPanel Orientation="Vertical">
+
+                <!-- Title -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Source="/GoldDiggerDesktop;component/Images/Host64.png" />
+                    <Separator Visibility="Hidden" />
+                    <TextBlock Text="Host game" Margin="20" FontSize="50" FontWeight="Bold" Foreground="Gold" />
+                </StackPanel>
+
+                <!-- Host -->
+                <GroupBox Background="OrangeRed" Margin="20,0,20,0" BorderThickness="0">
+                    <GroupBox.Header>
+                        <Border BorderBrush="White" Background="OrangeRed" BorderThickness="0" CornerRadius="8,8,8,8">
+                            <StackPanel Orientation="Horizontal">
+                                <Separator Width="6" Visibility="Hidden" />
+                                <Image Source="/GoldDiggerDesktop;component/Images/User24.png" Grid.Row="0" Grid.Column="0" />
+                                <Label Content="Host" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                            </StackPanel>
+                        </Border>
+                    </GroupBox.Header>
+
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="56" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="56" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Name -->
+                        <Image Source="/GoldDiggerDesktop;component/Images/Tag64.png" Height="24" Grid.Column="0" />
+                        <Label Content="Name" Style="{StaticResource FontStyle}" Grid.Column="1" />
+                        <Label Content="{Binding Host.Name}" Style="{StaticResource FontStyle}" Grid.Column="2" />
+
+                        <!-- IP-address -->
+                        <Image Source="/GoldDiggerDesktop;component/Images/IpAddress32.png" Height="24" Grid.Column="3" />
+                        <Label Content="IP-address" Style="{StaticResource FontStyle}" Grid.Column="4" />
+                        <Label Content="{Binding Host.EndPoint.Address}" Style="{StaticResource FontStyle}" Grid.Column="5" />
+                    </Grid>
+                </GroupBox>
+
+                <Separator Visibility="Hidden" Height="12" />
+
+                <!-- Opponents -->
+                <GroupBox Background="DarkOrange" Margin="20,0,20,0" BorderThickness="0">
+                    <GroupBox.Header>
+                        <Border BorderBrush="White" Background="DarkOrange" BorderThickness="0" CornerRadius="8,8,8,8">
+                            <StackPanel Orientation="Horizontal">
+                                <Separator Width="6" Visibility="Hidden" />
+                                <Image Source="/GoldDiggerDesktop;component/Images/User24.png" Grid.Row="0" Grid.Column="0" />
+                                <Label Content="Opponents" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                            </StackPanel>
+                        </Border>
+                    </GroupBox.Header>
+
+                    <DataGrid ItemsSource="{Binding Opponents}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="20">
+                        <DataGrid.Columns>
+
+                            <!-- IP-address -->
+                            <DataGridTextColumn Binding="{Binding EndPoint.Address}" Width="Auto" FontSize="16" FontWeight="Bold">
+                                <DataGridTextColumn.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/GoldDiggerDesktop;component/Images/IpAddress32.png" Height="24" />
+                                        <Label Content="IP-address" Style="{StaticResource HeaderStyle}" />
+                                    </StackPanel>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+
+                            <!-- Name -->
+                            <DataGridTextColumn Binding="{Binding Name}" Width="Auto" FontSize="16" FontWeight="Bold">
+                                <DataGridTextColumn.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/GoldDiggerDesktop;component/Images/Tag64.png" Height="24" />
+                                        <Label Content="Name" Style="{StaticResource HeaderStyle}" />
+                                    </StackPanel>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+
+                            <!-- Remove -->
+                            <DataGridTemplateColumn Width="Auto">
+                                <DataGridTemplateColumn.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/GoldDiggerDesktop;component/Images/UserRemove24.png" />
+                                        <Label Content="Remove" Style="{StaticResource HeaderStyle}" />
+                                    </StackPanel>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Command="{Binding Remove}" Width="40" Margin="6">
+                                            <Button.Content>
+                                                <Image Source="/GoldDiggerDesktop;component/Images/Minus32.png" />
+                                            </Button.Content>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+
+                <Separator Visibility="Hidden" Height="12" />
+                
+                <DockPanel Margin="20" LastChildFill="True">
+
+                    <!-- Back -->
+                    <Border DockPanel.Dock="Left" Width="170" Background="Orange" BorderThickness="1" CornerRadius="8,8,8,8">
+                        <Button Command="{Binding Back}" Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Border}}}" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Height="80">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/GoldDiggerDesktop;component/Images/Back64.png" Height="32" />
+                                    <Separator Visibility="Hidden" Width="16" />
+                                    <TextBlock Text="Back" FontSize="30" FontWeight="Bold" Foreground="Gray" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </Border>
+
+                    <!-- Host -->
+                    <Border DockPanel.Dock="Right" Width="170" Background="Orange" BorderThickness="1" CornerRadius="8,8,8,8">
+                        <Button Command="{Binding Start}" Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Border}}}" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Height="80">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/GoldDiggerDesktop;component/Images/Icon128.png" Height="32" />
+                                    <Separator Visibility="Hidden" Width="16" />
+                                    <TextBlock Text="Start" FontSize="30" FontWeight="Bold" Foreground="Gray" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </Border>
+                    <Separator Visibility="Hidden" />
+                </DockPanel>
+                
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

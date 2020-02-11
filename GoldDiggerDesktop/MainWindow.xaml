@@ -7,16 +7,37 @@
         xmlns:vm="clr-namespace:GoldDiggerDesktop.ViewModels"
         xmlns:views="clr-namespace:GoldDiggerDesktop.Views"
         mc:Ignorable="d"
-        Background="#FDB813"
+        Background="Coral"
         WindowStartupLocation="CenterScreen"
-        Title="Gold Digger" Height="600" Width="800" Loaded="Window_Loaded">
+        Title="Gold Digger" Height="600" Width="1200" Loaded="Window_Loaded">
 
     <Window.DataContext>
         <vm:vmMainWindow />
     </Window.DataContext>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="170" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Game content -->
+        <ContentControl x:Name="Container" Grid.Column="1">
+            <views:NewGame VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </ContentControl>
+
+        <!-- Right column -->
+        <DockPanel Grid.Column="2" LastChildFill="True">
+            <views:Version DockPanel.Dock="Bottom" Margin="10" />
+            <ContentControl DockPanel.Dock="Top" />
+        </DockPanel>
+
+        
+        
+    </Grid>
     
-    <ContentControl x:Name="Container">
-        <views:NewGame VerticalAlignment="Center" HorizontalAlignment="Center" />
-    </ContentControl>
+    
     
 </Window>

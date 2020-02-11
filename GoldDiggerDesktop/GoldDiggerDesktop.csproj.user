@@ -13,10 +13,16 @@
     <Compile Update="Views\FourPlayers.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\HostMenu.xaml.cs">
+    <Compile Update="Views\JoinGameSummary.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\HostSetup.xaml.cs">
+    <Compile Update="Views\JoinGame.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\HostGameSummary.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\HostGame.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\LowerPlayerArea.xaml.cs">
@@ -31,6 +37,9 @@
     <Compile Update="Views\TwoPlayers.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Version.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -42,10 +51,16 @@
     <Page Update="Views\FourPlayers.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\HostMenu.xaml">
+    <Page Update="Views\JoinGameSummary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\HostSetup.xaml">
+    <Page Update="Views\JoinGame.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\HostGameSummary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\HostGame.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\LowerPlayerArea.xaml">
@@ -58,6 +73,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\TwoPlayers.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Version.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

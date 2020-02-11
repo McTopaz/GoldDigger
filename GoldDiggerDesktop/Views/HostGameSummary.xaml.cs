@@ -16,9 +16,9 @@ namespace GoldDiggerDesktop.Views
     /// <summary>
     /// Interaction logic for HostMenu.xaml
     /// </summary>
-    public partial class HostMenu : UserControl
+    public partial class HostGameSummary : UserControl
     {
-        public HostMenu()
+        public HostGameSummary()
         {
             InitializeComponent();
         }

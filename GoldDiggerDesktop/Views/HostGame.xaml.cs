@@ -16,9 +16,9 @@ namespace GoldDiggerDesktop.Views
     /// <summary>
     /// Interaction logic for HostSetup.xaml
     /// </summary>
-    public partial class HostSetup : UserControl
+    public partial class HostGame : UserControl
     {
-        public HostSetup()
+        public HostGame()
         {
             InitializeComponent();
         }

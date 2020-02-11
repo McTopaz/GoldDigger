@@ -12,29 +12,21 @@ using GoldDiggerDesktop.Misc;
 namespace GoldDiggerDesktop.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    class vmHostMenu : vmBase
+    class vmMenu : vmBase
     {
         public ObservableCollection<Player> Opponents { get; private set; } = new ObservableCollection<Player>();
         public Player Host { get; set; }
 
-        public RelayCommand Start { get; private set; } = new RelayCommand();
         public RelayCommand Back { get; private set; } = new RelayCommand();
 
-        public vmHostMenu()
+        public vmMenu()
         {
-            Start.Enable = _ => Opponents.Count > 1;
-
-            Start.Callback += Start_Callback;
             Back.Callback += Back_Callback;
-        }
-
-        private void Start_Callback(object parameter = null)
-        {
         }
 
         private void Back_Callback(object parameter = null)
         {
-            var view = new Views.HostSetup();
+            var view = new Views.HostGame();
             view.DataContext = base.Previously;
             ShowContent(view);
         }
