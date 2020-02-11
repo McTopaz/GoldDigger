@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/GoldDigger/v16
+/.vs/GoldDigger/DesignTimeBuild
+/Console/obj
+/GoldDiggerApi/bin/Debug/netstandard2.0
+/GoldDiggerApi/obj/Debug/netstandard2.0
+/GoldDiggerApi/obj
+/GoldDiggerConsole/bin/Debug/netcoreapp3.1
+/GoldDiggerConsole/obj/Debug/netcoreapp3.1
+/GoldDiggerConsole/obj
+/GoldDiggerDesktop/bin/Debug/netcoreapp3.1
