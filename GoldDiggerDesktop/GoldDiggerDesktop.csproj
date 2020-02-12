@@ -34,11 +34,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NetMQ" Version="4.0.0.207" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\GoldDiggerApi\GoldDiggerApi.csproj" />
+    <ProjectReference Include="..\GoldDiggerCommunication\GoldDiggerCommunication.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -91,7 +91,7 @@
                         </Border>
                     </GroupBox.Header>
 
-                    <DataGrid ItemsSource="{Binding Opponents}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="20">
+                    <DataGrid ItemsSource="{Binding Opponents}" SelectedItem="{Binding Opponent}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="20">
                         <DataGrid.Columns>
 
                             <!-- IP-address -->
@@ -124,7 +124,7 @@
                                 </DataGridTemplateColumn.Header>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Command="{Binding Remove}" Width="40" Margin="6">
+                                        <Button Command="{Binding Rem}" CommandParameter="{Binding SelectedTem, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" Width="40" Margin="6">
                                             <Button.Content>
                                                 <Image Source="/GoldDiggerDesktop;component/Images/Minus32.png" />
                                             </Button.Content>

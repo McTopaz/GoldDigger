@@ -15,7 +15,8 @@ namespace GoldDiggerDesktop.ViewModels
     class vmMenu : vmBase
     {
         public ObservableCollection<Player> Opponents { get; private set; } = new ObservableCollection<Player>();
-        public Player Host { get; set; }
+        public Player Opponent { get; set; }
+        public Player Player { get; set; }
 
         public RelayCommand Back { get; private set; } = new RelayCommand();
 

@@ -7,7 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldDiggerApi", "GoldDigger
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldDiggerConsole", "GoldDiggerConsole\GoldDiggerConsole.csproj", "{20010BAC-8748-4C55-AD43-0805B72F2571}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiggerDesktop", "GoldDiggerDesktop\GoldDiggerDesktop.csproj", "{8E068461-EDF8-40AB-AFB3-6B63544FB796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldDiggerDesktop", "GoldDiggerDesktop\GoldDiggerDesktop.csproj", "{8E068461-EDF8-40AB-AFB3-6B63544FB796}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E1FFF2B1-81CA-4934-B40A-6C4CD9E7EDF2}"
+	ProjectSection(SolutionItems) = preProject
+		Communications.txt = Communications.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiggerCommunication", "GoldDiggerCommunication\GoldDiggerCommunication.csproj", "{40CE52F4-7199-45B2-87A6-7A2F89CD8653}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,10 @@ Global
 		{8E068461-EDF8-40AB-AFB3-6B63544FB796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E068461-EDF8-40AB-AFB3-6B63544FB796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E068461-EDF8-40AB-AFB3-6B63544FB796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40CE52F4-7199-45B2-87A6-7A2F89CD8653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40CE52F4-7199-45B2-87A6-7A2F89CD8653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40CE52F4-7199-45B2-87A6-7A2F89CD8653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40CE52F4-7199-45B2-87A6-7A2F89CD8653}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

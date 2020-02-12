@@ -1,0 +1,8 @@
+C:\Users\andbr_ikg\Source\Repos\GoldDigger\GoldDiggerCommunication\bin\Debug\netstandard2.0\GoldDiggerCommunication.deps.json
+C:\Users\andbr_ikg\Source\Repos\GoldDigger\GoldDiggerCommunication\bin\Debug\netstandard2.0\GoldDiggerCommunication.dll
+C:\Users\andbr_ikg\Source\Repos\GoldDigger\GoldDiggerCommunication\obj\Debug\netstandard2.0\GoldDiggerCommunication.csprojAssemblyReference.cache
+C:\Users\andbr_ikg\Source\Repos\GoldDigger\GoldDiggerCommunication\obj\Debug\netstandard2.0\GoldDiggerCommunication.AssemblyInfoInputs.cache
+C:\Users\andbr_ikg\Source\Repos\GoldDigger\GoldDiggerCommunication\obj\Debug\netstandard2.0\GoldDiggerCommunication.AssemblyInfo.cs
+C:\Users\andbr_ikg\Source\Repos\GoldDigger\GoldDiggerCommunication\bin\Debug\netstandard2.0\GoldDiggerCommunication.pdb
+C:\Users\andbr_ikg\Source\Repos\GoldDigger\GoldDiggerCommunication\obj\Debug\netstandard2.0\GoldDiggerCommunication.dll
+C:\Users\andbr_ikg\Source\Repos\GoldDigger\GoldDiggerCommunication\obj\Debug\netstandard2.0\GoldDiggerCommunication.pdb

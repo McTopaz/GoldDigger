@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Net.NetworkInformation;
+using System.Threading.Tasks;
 
 using GoldDiggerDesktop.Misc;
 
@@ -23,13 +24,15 @@ namespace GoldDiggerDesktop.ViewModels
         {
             var view = new Views.JoinGameSummary();
             var vm = view.DataContext as vmJoinGameSummary;
+            var endPoint = new IPEndPoint(IpAddress, Port);
 
             vm.Previously = this;
-            vm.Guest = new Player()
+            vm.Player = new GuestPlayer()
             {
                 EndPoint = new IPEndPoint(IpAddress, Port),
                 Name = Name
             };
+            vm.SetupGuest();
 
             ShowContent(view);
         }

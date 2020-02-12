@@ -6,12 +6,21 @@ using System.Windows.Media;
 
 namespace GoldDiggerDesktop.Misc
 {
-    class Player
+    abstract class Player
     {
+        public Guid ID { get; set; }
         public IPEndPoint EndPoint { get; set; }
-
         public string Name { get; set; }
 
         public RelayCommand Remove { get; private set; } = new RelayCommand();
+        public RelayCommand<Player> Rem { get; private set; } = new RelayCommand<Player>();
+
+        public Player()
+        {
+            ID = new Guid();
+        }
     }
+
+    class HostPlayer : Player {}
+    class GuestPlayer : Player {}
 }

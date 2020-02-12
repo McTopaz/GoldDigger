@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Net;
-using System.Net.Sockets;
-using System.Net.NetworkInformation;
 
 using GoldDiggerDesktop.Misc;
 
@@ -25,12 +23,12 @@ namespace GoldDiggerDesktop.ViewModels
             var vm = view.DataContext as vmHostGameSummary;
 
             vm.Previously = this;
-            vm.Host = new Player()
+            vm.Player = new HostPlayer()
             {
                 EndPoint = new IPEndPoint(IpAddress, Port),
                 Name = Name,
             };
-            vm.Host.Remove.Enable = _ => false;
+            vm.SetupHost();
 
             ShowContent(view);
         }

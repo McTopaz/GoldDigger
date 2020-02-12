@@ -1,0 +1,22 @@
+
+Server (Host)			    Clients (Guests)
+==============================================================
+
+New TCP-listner
+ * IP:      ip1
+ * Port:    47806, 0xBABE
+ * Lim:     3 connections
+
+                            Connect to ip1:0xBABE
+
+New server (req-res)
+                            New client (req-res)
+New puplicher
+                            New subscriber
+
+         === Repeat for other client ====
+
+Starts game
+Publish game info
+                            Receive game info
+
