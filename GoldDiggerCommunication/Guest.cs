@@ -13,32 +13,47 @@ namespace GoldDiggerCommunication
     {
         TcpClient Client { get; set; }
         public IPEndPoint EndPoint { get; private set; }
+        public Guid ID { get; private set; }
         public string Name { get; private set; }
 
         public Action Rejected;
-        public Func<(Guid ID, string Name)> Information;
 
-        public Guest(IPEndPoint endPoint)
+        public Guest(IPEndPoint endPoint, Guid id, string name)
         {
             EndPoint = endPoint;
             Client = new TcpClient();
             Client.Connect(endPoint);
+            ReplyInformation(id, name);
         }
 
-        public Guest(TcpClient client, string name)
+        public Guest(TcpClient client)
         {
             Client = client;
-            Name = name;
             EndPoint = client.Client.LocalEndPoint as IPEndPoint;
+            InquiryInformation();
         }
 
-        private void WaitToSendInformation()
+        void InquiryInformation()
         {
-            var information = Information();
+            var id = "";
+            var name = "";
+
+            using (var requester = new RequestSocket($"tcp://{EndPoint.ToString()}"))
+            {
+                id = requester.ReceiveFrameString();
+                name = requester.ReceiveFrameString();
+            }
+
+            ID = Guid.Parse(id);
+            Name = name;
+        }
+
+        void ReplyInformation(Guid id, string name)
+        {
             using (var responder = new ResponseSocket($"$tcp://{EndPoint.ToString()}"))
             {
-                var data = "";
-                //responder.SendMultipartBytes(new byte[][] )
+                responder.SendFrame(id.ToString());
+                responder.SendFrame(name);
             }
         }
     }
@@ -46,6 +61,7 @@ namespace GoldDiggerCommunication
     public interface GuestAtHost
     {
         IPEndPoint EndPoint { get; }
+        Guid ID { get; }
         string Name { get; }
     }
 }

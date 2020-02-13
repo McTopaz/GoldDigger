@@ -26,10 +26,10 @@ namespace GoldDiggerCommunication
 
         public void Run()
         {
-            AcceptGuestsAsync();
+            AcceptGuests();
         }
 
-        void AcceptGuestsAsync()
+        void AcceptGuests()
         {
             var listner = new TcpListener(EndPoint);
             listner.Start(MaxConnection);
@@ -43,20 +43,9 @@ namespace GoldDiggerCommunication
 
         void NewGuest(TcpClient client)
         {
-            var name = RequestGuestName();
-            var guest = new Guest(client, name);
+            var guest = new Guest(client);
             Guests.Add(guest);
             GuestHasJoined(guest);
-        }
-
-        private string RequestGuestName()
-        {
-            using (var requester = new RequestSocket($"tcp://{EndPoint.ToString()}"))
-            {
-                //requester.SendFrameEmpty();
-                //requester.SendFrame("Information");
-                return requester.ReceiveFrameString();
-            }
         }
 
         public void StartGame()

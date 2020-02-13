@@ -17,7 +17,7 @@ namespace GoldDiggerDesktop.Misc
 
         public Player()
         {
-            ID = new Guid();
+            ID = Guid.NewGuid();
         }
     }
 

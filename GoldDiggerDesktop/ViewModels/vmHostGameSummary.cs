@@ -27,7 +27,6 @@ namespace GoldDiggerDesktop.ViewModels
         {
             Host = new Host(Player.EndPoint);
             Host.GuestHasJoined = GuestHasJoined;
-
         }
 
         private void Start_Callback(object parameter = null)
@@ -40,6 +39,7 @@ namespace GoldDiggerDesktop.ViewModels
             var player = new GuestPlayer()
             {
                 EndPoint = guest.EndPoint,
+                ID = guest.ID,
                 Name = guest.Name
             };
             Opponents.Add(player);

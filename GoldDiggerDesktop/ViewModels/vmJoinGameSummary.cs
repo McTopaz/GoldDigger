@@ -15,19 +15,12 @@ namespace GoldDiggerDesktop.ViewModels
 
         public vmJoinGameSummary()
         {
-            SetupGuest();
         }
 
         public void SetupGuest()
         {
-            Guest = new Guest(Player.EndPoint);
+            Guest = new Guest(Player.EndPoint, Player.ID, Player.Name);
             Guest.Rejected = Rejected;
-            Guest.Information = TransferInformation;
-        }
-
-        private (Guid, string) TransferInformation()
-        {
-            return (Player.ID, Player.Name);
         }
 
         private void Rejected()
