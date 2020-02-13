@@ -13,3 +13,7 @@
 /GoldDiggerConsole/obj
 /GoldDiggerDesktop/bin/Debug/netcoreapp3.1
 /GoldDiggerDesktop/obj
+/GoldDiggerAndroid/GoldDiggerAndroid/bin/Debug/netstandard2.0
+/GoldDiggerAndroid/GoldDiggerAndroid/obj
+/GoldDiggerAndroid/GoldDiggerAndroid.Android/bin/Debug
+/GoldDiggerAndroid/GoldDiggerAndroid.Android/obj
