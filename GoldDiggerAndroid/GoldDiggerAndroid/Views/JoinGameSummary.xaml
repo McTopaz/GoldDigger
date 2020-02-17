@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:GoldDiggerAndroid.ViewModels"
+             xmlns:sfGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             mc:Ignorable="d"
+             x:Class="GoldDiggerAndroid.Views.JoinGameSummary">
+
+    <ContentPage.BindingContext>
+        <vm:vmJoinGameSummary />
+    </ContentPage.BindingContext>
+    
+    <StackLayout Orientation="Vertical">
+
+        <!-- Title -->
+        <Label Text="Join game summary" TextColor="Gold" FontSize="50" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="20" />
+
+        <!-- Host -->
+        <Frame CornerRadius="8" BackgroundColor="OrangeRed" Margin="10" Padding="0">
+            <TableView>
+                <TableRoot>
+                    <TableSection Title="Host">
+                        <TextCell Text="IP-address" Detail="{Binding Host.IpAddress}" />
+                        <TextCell Text="Name" Detail="{Binding Host.EndPoint}" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </Frame>
+        
+        <!-- Player -->
+        <Frame CornerRadius="8" BackgroundColor="DarkOrange" Margin="10" Padding="0">
+            <TableView>
+                <TableRoot>
+                    <TableSection Title="Host">
+                        <TextCell Text="IP-address" Detail="{Binding Player.IpAddress}" />
+                        <TextCell Text="Name" Detail="{Binding Binding Player.EndPoint}" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </Frame>
+
+        <!-- Opponents -->
+        <Frame CornerRadius="8" BackgroundColor="Orange" Margin="10" Padding="0">
+
+            <sfGrid:SfDataGrid ItemsSource="{Binding Opponents}" AutoGenerateColumns="False">
+                <sfGrid:SfDataGrid.Columns>
+
+                    <sfGrid:GridTextColumn HeaderText="Name" MappingName="Name" />
+                    <sfGrid:GridTextColumn HeaderText="IP-address" MappingName="EndPoint.Address" />
+
+                </sfGrid:SfDataGrid.Columns>
+            </sfGrid:SfDataGrid>
+            
+        </Frame>
+
+    </StackLayout>
+</ContentPage>

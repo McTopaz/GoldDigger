@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Net.NetworkInformation;
 
-using GoldDiggerDesktop.Misc;
+using GoldDigger.Common;
 
 namespace GoldDiggerDesktop.ViewModels
 {

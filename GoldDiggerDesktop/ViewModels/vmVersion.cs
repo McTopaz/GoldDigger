@@ -12,6 +12,6 @@ namespace GoldDiggerDesktop.ViewModels
     class vmVersion
     {
         public string GuiVersion { get; private set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public string ApiVersion { get; private set; } = FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(GoldDiggerApi.Game)).Location).ProductVersion;
+        public string ApiVersion { get; private set; } = FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(GoldDigger.Api.Game)).Location).ProductVersion;
     }
 }

@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:GoldDiggerAndroid.ViewModels"
-             xmlns:laavor="clr-namespace:LaavorGroupBox;assembly=GroupBox"
+             xmlns:misc="clr-namespace:GoldDiggerAndroid.Misc"
              mc:Ignorable="d"
              BackgroundColor="SaddleBrown"
              x:Class="GoldDiggerAndroid.Views.JoinGame">
@@ -18,21 +18,33 @@
         <!-- Title -->
         <Label Text="Join game" TextColor="Gold" FontSize="50" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="20" />
 
-        <laavor:GroupBox Margin="20" BackgroundColor="OrangeRed" Title="User settings">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+        <!-- Settings -->
+        <Frame CornerRadius="8" BackgroundColor="OrangeRed" Margin="10" Padding="0">
+            <Frame.Resources>
+                <misc:TextToInt x:Key="TextToInt" />
+            </Frame.Resources>
 
-                <!-- Name -->
-                <Label Text="Name" Grid.Row="0" Grid.Column="0" />
-                <Entry Text="{Binding Name}" Margin="6" Grid.Row="0" Grid.Column="1" />
-            </Grid>
-        </laavor:GroupBox>
+            <TableView>
+                <TableRoot>
+                    
+                    <TableSection Title="User settings">
+                        <EntryCell Label="Name" Text="{Binding Name}" />
+                    </TableSection>
+
+                    <TableSection Title="Network settings">
+                        <EntryCell Label="IP-address" Text="{Binding IpAddress}" Keyboard="Text" />
+                        <EntryCell Label="Port" Text="{Binding Port, Converter={StaticResource TextToInt}}" Keyboard="Numeric" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            
+        </Frame>
+
+
+        <!-- Join -->
+        <Frame CornerRadius="8" BackgroundColor="DarkOrange" Margin="10" Padding="0">
+            <Button Command="{Binding Join}" Text="Join" FontSize="30" FontAttributes="Bold" BackgroundColor="Transparent" />
+        </Frame>
 
     </StackLayout>
 

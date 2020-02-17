@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:GoldDigger.Mobile.ViewModels"
+             xmlns:misc="clr-namespace:GoldDigger.Mobile.Misc"
+             mc:Ignorable="d"
+             BackgroundColor="SaddleBrown"
+             x:Class="GoldDigger.Mobile.Views.JoinGame">
+
+    <ContentPage.BindingContext>
+        <vm:vmJoinGame />
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="Vertical">
+
+        <!-- Title -->
+        <Label Text="Join game" TextColor="Gold" FontSize="50" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="20" />
+
+        <!-- Settings -->
+        <Frame CornerRadius="8" BackgroundColor="OrangeRed" Margin="10" Padding="0">
+            <Frame.Resources>
+                <misc:TextToInt x:Key="TextToInt" />
+            </Frame.Resources>
+
+            <TableView>
+                <TableRoot>
+
+                    <TableSection Title="User settings">
+                        <EntryCell Label="Name" Text="{Binding Name}" />
+                    </TableSection>
+
+                    <TableSection Title="Network settings">
+                        <EntryCell Label="IP-address" Text="{Binding IpAddress}" Keyboard="Text" />
+                        <EntryCell Label="Port" Text="{Binding Port, Converter={StaticResource TextToInt}}" Keyboard="Numeric" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+        </Frame>
+
+
+        <!-- Join -->
+        <Frame CornerRadius="8" BackgroundColor="DarkOrange" Margin="10" Padding="0">
+            <Button Command="{Binding Join}" Text="Join" FontSize="30" FontAttributes="Bold" BackgroundColor="Transparent" />
+        </Frame>
+
+    </StackLayout>
+
+</ContentPage>

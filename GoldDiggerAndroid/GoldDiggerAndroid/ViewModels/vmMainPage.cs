@@ -4,6 +4,7 @@ using System.Text;
 using Xamarin.Forms;
 
 using GoldDiggerAndroid.Misc;
+using GoldDigger.Common;
 using PropertyChanged;
 
 namespace GoldDiggerAndroid.ViewModels

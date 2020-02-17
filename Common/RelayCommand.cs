@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 
-namespace GoldDiggerAndroid.Misc
+namespace GoldDigger.Common
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         public delegate void CallbackHandler(object parameter = null);
         public event CallbackHandler Callback;
@@ -34,7 +34,7 @@ namespace GoldDiggerAndroid.Misc
         }
     }
 
-    class RelayCommand<T> : ICommand
+    public class RelayCommand<T> : ICommand
     {
         public delegate void CallbackHandler(T parameter);
         public event CallbackHandler Callback;

@@ -4,14 +4,14 @@ using System.Text;
 
 using PropertyChanged;
 using GoldDiggerDesktop.Misc;
-using GoldDiggerCommunication;
+using GoldDigger.Communications;
 
 namespace GoldDiggerDesktop.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     class vmJoinGameSummary : vmMenu
     {
-        Guest Guest { get; set; }
+        GuestCommunication Guest { get; set; }
 
         public vmJoinGameSummary()
         {
@@ -19,7 +19,7 @@ namespace GoldDiggerDesktop.ViewModels
 
         public void SetupGuest()
         {
-            Guest = new Guest(Player.EndPoint, Player.ID, Player.Name);
+            Guest = new GuestCommunication(Player.EndPoint, Player.ID, Player.Name);
             Guest.Rejected = Rejected;
         }
 

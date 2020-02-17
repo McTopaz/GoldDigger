@@ -4,9 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:GoldDiggerAndroid.ViewModels"
-             xmlns:views="clr-namespace:GoldDiggerAndroid.Views"
              mc:Ignorable="d"
-             BackgroundColor="SaddleBrown"
              x:Class="GoldDiggerAndroid.MainPage">
 
     <ContentPage.BindingContext>
@@ -15,23 +13,17 @@
     
     <StackLayout Orientation="Vertical">
 
-        <!--<views:View1 />-->
-
-        
         <Label Text="Gold Digger" TextColor="Gold" FontSize="50" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="20" />
-
         
-        <Frame CornerRadius="8" BackgroundColor="OrangeRed" Margin="10">
+        <Frame CornerRadius="8" BackgroundColor="OrangeRed" Margin="10" Padding="0" HeightRequest="100">
             <Button Command="{Binding Host}" Text="Host game" FontSize="30" FontAttributes="Bold" BackgroundColor="Transparent" />
         </Frame>
         
-        
-        <Frame CornerRadius="8" BackgroundColor="DarkOrange" Margin="10">
+        <Frame CornerRadius="8" BackgroundColor="DarkOrange" Margin="10" Padding="0" HeightRequest="100">
             <Button Command="{Binding Join}" Text="Join game" FontSize="30" FontAttributes="Bold" BackgroundColor="Transparent" />
         </Frame>
-
         
-        <Frame CornerRadius="8" BackgroundColor="Orange" Margin="10">
+        <Frame CornerRadius="8" BackgroundColor="Orange" Margin="10" Padding="0" HeightRequest="100">
             <Button Command="{Binding Exit}" Text="Exit" FontSize="30" FontAttributes="Bold" BackgroundColor="Transparent" />
         </Frame>
 

@@ -40,13 +40,5 @@ namespace GoldDiggerDesktop
             view.VerticalAlignment = VerticalAlignment.Center;
             view.HorizontalAlignment = HorizontalAlignment.Center;
         }
-
-        private void DisplayContent(UserControl view, GoldDiggerCommunication.Host host)
-        {
-            var vm = view.DataContext as ViewModels.vmBase;
-            vm.ShowContent = DisplayContent;
-            Container.Content = view;
-
-        }
     }
 }

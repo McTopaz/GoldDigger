@@ -4,7 +4,7 @@ using System.Text;
 using System.Linq;
 using System.Net;
 
-using GoldDiggerDesktop.Misc;
+using GoldDigger.Common;
 
 namespace GoldDiggerDesktop.ViewModels
 {
@@ -23,7 +23,7 @@ namespace GoldDiggerDesktop.ViewModels
             var vm = view.DataContext as vmHostGameSummary;
 
             vm.Previously = this;
-            vm.Player = new HostPlayer()
+            vm.Player = new Host()
             {
                 EndPoint = new IPEndPoint(IpAddress, Port),
                 Name = Name,

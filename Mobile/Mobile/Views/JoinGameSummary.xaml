@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:GoldDigger.Mobile.ViewModels"
+             xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
+             mc:Ignorable="d"
+             x:Class="GoldDigger.Mobile.Views.JoinGameSummary">
+
+    <ContentPage.BindingContext>
+        <vm:vmJoinGameSummary />
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="Vertical">
+
+        <!-- Title -->
+        <Label Text="Join game summary" TextColor="Gold" FontSize="50" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="20" />
+
+        <!-- Host -->
+        <Frame CornerRadius="8" Margin="10" Padding="0">
+            <TableView>
+                <TableRoot>
+                    <TableSection Title="Host">
+                        <TextCell Text="IP-address" Detail="{Binding Host.IpAddress}" />
+                        <TextCell Text="Name" Detail="{Binding Host.EndPoint}" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </Frame>
+
+        <!-- Players -->
+        <Frame CornerRadius="8" Margin="10" Padding="0">
+
+            <StackLayout Orientation="Vertical">
+
+                <Label Text="Players" />
+                <dg:DataGrid ItemsSource="{Binding Opposite}">
+                    <dg:DataGrid.Columns>
+                        <dg:DataGridColumn Title="Name" PropertyName="Name" />
+                        <dg:DataGridColumn Title="IP-address" PropertyName="EndPoint.Address" />
+                    </dg:DataGrid.Columns>
+                </dg:DataGrid>
+
+            </StackLayout>
+
+        </Frame>
+
+    </StackLayout>
+</ContentPage>

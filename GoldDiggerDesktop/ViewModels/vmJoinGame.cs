@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 
+using GoldDigger.Common;
 using GoldDiggerDesktop.Misc;
 
 namespace GoldDiggerDesktop.ViewModels
@@ -27,7 +28,7 @@ namespace GoldDiggerDesktop.ViewModels
             var endPoint = new IPEndPoint(IpAddress, Port);
 
             vm.Previously = this;
-            vm.Player = new GuestPlayer()
+            vm.Player = new Guest()
             {
                 EndPoint = new IPEndPoint(IpAddress, Port),
                 Name = Name

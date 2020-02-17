@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-using GoldDiggerApi;
+using GoldDigger.Api;
 
 namespace GoldDiggerConsole
 {

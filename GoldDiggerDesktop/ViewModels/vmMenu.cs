@@ -5,9 +5,8 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 
-
 using PropertyChanged;
-using GoldDiggerDesktop.Misc;
+using GoldDigger.Common;
 
 namespace GoldDiggerDesktop.ViewModels
 {

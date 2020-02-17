@@ -6,8 +6,8 @@ using System.Net;
 using System.Threading;
 
 using PropertyChanged;
-using GoldDiggerDesktop.Misc;
-using GoldDiggerCommunication;
+using GoldDigger.Common;
+using GoldDigger.Communications;
 
 namespace GoldDiggerDesktop.ViewModels
 {
@@ -15,7 +15,7 @@ namespace GoldDiggerDesktop.ViewModels
     class vmHostGameSummary : vmMenu
     {
         public RelayCommand Start { get; private set; } = new RelayCommand();
-        Host Host { get; set; }
+        public HostCommunication Host { get; set; }
 
         public vmHostGameSummary()
         {
@@ -25,7 +25,7 @@ namespace GoldDiggerDesktop.ViewModels
 
         public void SetupHost()
         {
-            Host = new Host(Player.EndPoint);
+            Host = new HostCommunication(Player.EndPoint);
             Host.GuestHasJoined = GuestHasJoined;
         }
 
@@ -34,9 +34,9 @@ namespace GoldDiggerDesktop.ViewModels
             Host.StartGame();
         }
 
-        private void GuestHasJoined(GuestAtHost guest)
+        private void GuestHasJoined(OpponentAtHost guest)
         {
-            var player = new GuestPlayer()
+            var player = new Opponent()
             {
                 EndPoint = guest.EndPoint,
                 ID = guest.ID,

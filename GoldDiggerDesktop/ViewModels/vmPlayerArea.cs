@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Media;
 
 using PropertyChanged;
+using GoldDigger.Common;
 using GoldDiggerDesktop.Misc;
 
 namespace GoldDiggerDesktop.ViewModels

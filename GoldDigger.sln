@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldDiggerApi", "GoldDiggerApi\GoldDiggerApi.csproj", "{83DC783E-57F2-4358-8472-59B38E8791F3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldDiggerConsole", "GoldDiggerConsole\GoldDiggerConsole.csproj", "{20010BAC-8748-4C55-AD43-0805B72F2571}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console", "GoldDiggerConsole\Console.csproj", "{20010BAC-8748-4C55-AD43-0805B72F2571}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldDiggerDesktop", "GoldDiggerDesktop\GoldDiggerDesktop.csproj", "{8E068461-EDF8-40AB-AFB3-6B63544FB796}"
 EndProject
@@ -14,11 +12,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Communications.txt = Communications.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldDiggerCommunication", "GoldDiggerCommunication\GoldDiggerCommunication.csproj", "{40CE52F4-7199-45B2-87A6-7A2F89CD8653}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{DC72EEC6-4DCC-4EF4-8492-0C2DAAD64947}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiggerAndroid.Android", "GoldDiggerAndroid\GoldDiggerAndroid.Android\GoldDiggerAndroid.Android.csproj", "{FDB525B1-957A-40E4-B6CA-1D86FDA4DDBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{79E969BE-A433-4B50-9F9F-0700AA967438}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiggerAndroid", "GoldDiggerAndroid\GoldDiggerAndroid\GoldDiggerAndroid.csproj", "{23D43F00-C6D1-4DE0-BD2C-D95E7714A3FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communications", "Communications\Communications.csproj", "{22FEF729-9EF8-4615-816E-0A39735AE9D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.Android", "Mobile\Mobile.Android\Mobile.Android.csproj", "{F41651BD-73F4-4866-98B8-908D02994E75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile", "Mobile\Mobile\Mobile.csproj", "{0BE496D5-4DE1-4AA3-ADA9-46A66A9ECA03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +28,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{83DC783E-57F2-4358-8472-59B38E8791F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83DC783E-57F2-4358-8472-59B38E8791F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83DC783E-57F2-4358-8472-59B38E8791F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83DC783E-57F2-4358-8472-59B38E8791F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20010BAC-8748-4C55-AD43-0805B72F2571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{20010BAC-8748-4C55-AD43-0805B72F2571}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20010BAC-8748-4C55-AD43-0805B72F2571}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,20 +36,28 @@ Global
 		{8E068461-EDF8-40AB-AFB3-6B63544FB796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E068461-EDF8-40AB-AFB3-6B63544FB796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E068461-EDF8-40AB-AFB3-6B63544FB796}.Release|Any CPU.Build.0 = Release|Any CPU
-		{40CE52F4-7199-45B2-87A6-7A2F89CD8653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40CE52F4-7199-45B2-87A6-7A2F89CD8653}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40CE52F4-7199-45B2-87A6-7A2F89CD8653}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40CE52F4-7199-45B2-87A6-7A2F89CD8653}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDB525B1-957A-40E4-B6CA-1D86FDA4DDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDB525B1-957A-40E4-B6CA-1D86FDA4DDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDB525B1-957A-40E4-B6CA-1D86FDA4DDBF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{FDB525B1-957A-40E4-B6CA-1D86FDA4DDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDB525B1-957A-40E4-B6CA-1D86FDA4DDBF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDB525B1-957A-40E4-B6CA-1D86FDA4DDBF}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{23D43F00-C6D1-4DE0-BD2C-D95E7714A3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23D43F00-C6D1-4DE0-BD2C-D95E7714A3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23D43F00-C6D1-4DE0-BD2C-D95E7714A3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23D43F00-C6D1-4DE0-BD2C-D95E7714A3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC72EEC6-4DCC-4EF4-8492-0C2DAAD64947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC72EEC6-4DCC-4EF4-8492-0C2DAAD64947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC72EEC6-4DCC-4EF4-8492-0C2DAAD64947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC72EEC6-4DCC-4EF4-8492-0C2DAAD64947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E969BE-A433-4B50-9F9F-0700AA967438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E969BE-A433-4B50-9F9F-0700AA967438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E969BE-A433-4B50-9F9F-0700AA967438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E969BE-A433-4B50-9F9F-0700AA967438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22FEF729-9EF8-4615-816E-0A39735AE9D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22FEF729-9EF8-4615-816E-0A39735AE9D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22FEF729-9EF8-4615-816E-0A39735AE9D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22FEF729-9EF8-4615-816E-0A39735AE9D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F41651BD-73F4-4866-98B8-908D02994E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F41651BD-73F4-4866-98B8-908D02994E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F41651BD-73F4-4866-98B8-908D02994E75}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F41651BD-73F4-4866-98B8-908D02994E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F41651BD-73F4-4866-98B8-908D02994E75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F41651BD-73F4-4866-98B8-908D02994E75}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0BE496D5-4DE1-4AA3-ADA9-46A66A9ECA03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE496D5-4DE1-4AA3-ADA9-46A66A9ECA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE496D5-4DE1-4AA3-ADA9-46A66A9ECA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE496D5-4DE1-4AA3-ADA9-46A66A9ECA03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
