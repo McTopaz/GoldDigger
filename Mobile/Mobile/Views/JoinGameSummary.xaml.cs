@@ -17,5 +17,12 @@ namespace GoldDigger.Mobile.Views
             InitializeComponent();
             Xamarin.Forms.DataGrid.DataGridComponent.Init();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            var vm = BindingContext as ViewModels.vmJoinGameSummary;
+            vm.BackButtonPressed();
+            return base.OnBackButtonPressed();
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace GoldDiggerDesktop.ViewModels
             var vm = view.DataContext as vmHostGameSummary;
 
             vm.Previously = this;
-            vm.Player = new Host()
+            vm.Player = new PlayerInformation()
             {
                 EndPoint = new IPEndPoint(IpAddress, Port),
                 Name = Name,

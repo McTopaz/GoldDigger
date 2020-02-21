@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 
 using GoldDigger.Common;
+using GoldDigger.Communications;
 using PropertyChanged;
 
 namespace GoldDigger.Mobile.ViewModels
@@ -11,20 +12,32 @@ namespace GoldDigger.Mobile.ViewModels
     [AddINotifyPropertyChangedInterface]
     class vmJoinGameSummary : vmBase
     {
-        public ObservableCollection<Player> Players { get; private set; } = new ObservableCollection<Player>();
-        public Guest Player { get; set; }
-        public Host Host { get; set; }
+        public ObservableCollection<PlayerInformation> Players { get; private set; } = new ObservableCollection<PlayerInformation>();
+        public PlayerInformation Player { get; set; }
+        public PlayerInformation Host { get; set; }
 
-        public RelayCommand Back { get; private set; } = new RelayCommand();
+        Guest Guest { get; set; }
 
         public vmJoinGameSummary()
         {
-            Back.Callback += Back_Callback;
         }
 
-        private void Back_Callback(object parameter = null)
+        public void SetupCommunication()
         {
-            
+            Guest = new Guest(Player);
+            Guest.HostInformation = HostInformation;
+            Guest.RejectedByHost = Rejected;
+            base.BackButtonPressed = Guest.Leave;
+        }
+
+        void HostInformation()
+        {
+            Host = Guest.Host;
+        }
+
+        private void Rejected()
+        {
+            Navigation.PopModalAsync();
         }
     }
 }

@@ -12,8 +12,8 @@ namespace GoldDigger.Mobile.ViewModels
     class vmJoinGame : vmBase
     {
         public string Name { get; set; } = Xamarin.Essentials.DeviceInfo.Name;
-        public IPAddress IpAddress { get; set; } = IPAddress.Broadcast;
-        public int Port { get; set; } = 0xBABE;
+        public IPAddress IpAddress { get; set; } = IPAddress.Parse("192.168.8.104");
+        public int Port { get; set; } = Constants.ConnectPort;
 
         public RelayCommand Join { get; private set; } = new RelayCommand();
 
@@ -26,7 +26,13 @@ namespace GoldDigger.Mobile.ViewModels
         {
             var view = new Views.JoinGameSummary();
             var vm = view.BindingContext as vmJoinGameSummary;
-            vm.Player = new Guest() { Name = Name, EndPoint = new IPEndPoint(IpAddress, Port) };
+            vm.Player = new PlayerInformation()
+            {
+                Name = Name,
+                EndPoint = new IPEndPoint(IpAddress, Port)
+            };
+            vm.SetupCommunication();
+
             ShowPage(view);
         }
     }

@@ -28,7 +28,7 @@ namespace GoldDiggerDesktop.ViewModels
             var endPoint = new IPEndPoint(IpAddress, Port);
 
             vm.Previously = this;
-            vm.Player = new Guest()
+            vm.Player = new PlayerInformation()
             {
                 EndPoint = new IPEndPoint(IpAddress, Port),
                 Name = Name

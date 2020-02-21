@@ -6,7 +6,6 @@
              xmlns:vm="clr-namespace:GoldDigger.Mobile.ViewModels"
              xmlns:misc="clr-namespace:GoldDigger.Mobile.Misc"
              mc:Ignorable="d"
-             BackgroundColor="SaddleBrown"
              x:Class="GoldDigger.Mobile.Views.JoinGame">
 
     <ContentPage.BindingContext>
@@ -32,7 +31,7 @@
                     </TableSection>
 
                     <TableSection Title="Network settings">
-                        <EntryCell Label="IP-address" Text="{Binding IpAddress}" Keyboard="Text" />
+                        <EntryCell Label="IP-address" Text="{Binding IpAddress, Mode=TwoWay}" Keyboard="Text" />
                         <EntryCell Label="Port" Text="{Binding Port, Converter={StaticResource TextToInt}}" Keyboard="Numeric" />
                     </TableSection>
                 </TableRoot>

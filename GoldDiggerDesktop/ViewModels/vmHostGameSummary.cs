@@ -14,19 +14,23 @@ namespace GoldDiggerDesktop.ViewModels
     [AddINotifyPropertyChangedInterface]
     class vmHostGameSummary : vmMenu
     {
+        object lockObject = new object();
         public RelayCommand Start { get; private set; } = new RelayCommand();
-        public HostCommunication Host { get; set; }
+        Host Host { get; set; }
 
         public vmHostGameSummary()
         {
+            System.Windows.Data.BindingOperations.EnableCollectionSynchronization(Opponents, lockObject);
+
             Start.Enable = _ => Opponents.Count > 1;
             Start.Callback += Start_Callback;
         }
 
         public void SetupHost()
         {
-            Host = new HostCommunication(Player.EndPoint);
+            Host = new Host(Player);
             Host.GuestHasJoined = GuestHasJoined;
+            Host.GuestHasLeft = GuestHastLeft;
         }
 
         private void Start_Callback(object parameter = null)
@@ -34,16 +38,16 @@ namespace GoldDiggerDesktop.ViewModels
             Host.StartGame();
         }
 
-        private void GuestHasJoined(OpponentAtHost guest)
+        private void GuestHasJoined(Opponent player)
         {
-            var player = new Opponent()
-            {
-                EndPoint = guest.EndPoint,
-                ID = guest.ID,
-                Name = guest.Name
-            };
             Opponents.Add(player);
             player.Remove.Callback += RemovePlayer;
+        }
+
+        private void GuestHastLeft(Opponent player)
+        {
+            Opponents.Remove(player);
+            player.Remove.Callback -= RemovePlayer;
         }
 
         private void RemovePlayer(object parameter = null)

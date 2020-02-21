@@ -22,8 +22,8 @@
             <TableView>
                 <TableRoot>
                     <TableSection Title="Host">
-                        <TextCell Text="IP-address" Detail="{Binding Host.IpAddress}" />
-                        <TextCell Text="Name" Detail="{Binding Host.EndPoint}" />
+                        <TextCell Text="IP-address" Detail="{Binding Host.EndPoint.Address}" />
+                        <TextCell Text="Name" Detail="{Binding Host.Name}" />
                     </TableSection>
                 </TableRoot>
             </TableView>

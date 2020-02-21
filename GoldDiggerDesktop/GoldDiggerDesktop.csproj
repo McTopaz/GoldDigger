@@ -35,7 +35,7 @@
 
   <ItemGroup>
     <PackageReference Include="NetMQ" Version="4.0.0.207" />
-    <PackageReference Include="PropertyChanged.Fody" Version="3.2.5" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.2.6" />
   </ItemGroup>
 
   <ItemGroup>

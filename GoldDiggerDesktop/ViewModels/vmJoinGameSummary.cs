@@ -11,7 +11,8 @@ namespace GoldDiggerDesktop.ViewModels
     [AddINotifyPropertyChangedInterface]
     class vmJoinGameSummary : vmMenu
     {
-        GuestCommunication Guest { get; set; }
+        //Guest Guest { get; set; }
+        Guest Guest;
 
         public vmJoinGameSummary()
         {
@@ -19,8 +20,8 @@ namespace GoldDiggerDesktop.ViewModels
 
         public void SetupGuest()
         {
-            Guest = new GuestCommunication(Player.EndPoint, Player.ID, Player.Name);
-            Guest.Rejected = Rejected;
+            Guest = new Guest(Player);
+            Guest.RejectedByHost = Rejected;
         }
 
         private void Rejected()
