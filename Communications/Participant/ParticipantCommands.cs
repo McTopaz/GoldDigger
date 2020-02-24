@@ -12,25 +12,17 @@ namespace GoldDigger.Communications
         public void SendHostInformation()
         {
             SendCommand(HostCommands.Information);
-
-            var data = Host.ID.ToByteArray();
-            Stream.Write(data, 0, data.Length);
-
-            data = Constants.Encoding.GetBytes(Host.Name);
-            Stream.Write(data, 0, data.Length);
+            SendPlayerInfo(Host);
         }
 
         public void ReceiveParticipantInformation()
         {
-            var data = new byte[16];
-            var num = Stream.Read(data, 0, data.Length);
-            var idData = data.Take(num).ToArray();
-            Player.ID = new Guid(idData);
+            ReceivePlayerInfo(Player);
+        }
 
-            data = new byte[1024];
-            num = Stream.Read(data, 0, data.Length);
-            var nameData = data.Take(num).ToArray();
-            Player.Name = Constants.Encoding.GetString(nameData);
+        private void Rejected()
+        {
+            SendCommand(HostCommands.Rejected);
         }
 
         public void Leaving()
@@ -43,6 +35,26 @@ namespace GoldDigger.Communications
         {
             SendCommand(HostCommands.Terminate);
             Disconnect();
+        }
+
+        public void HostLeaving()
+        {
+            SendCommand(HostCommands.Leaving);
+        }
+
+        public void UpdateOpponents(IEnumerable<PlayerInformation> opponents)
+        {
+            SendCommand(HostCommands.Opponents);
+
+            // Send number of opponents.
+            var num = (byte)opponents.Count();
+            Stream.WriteByte(num);
+
+            // Transfer each oppponent's player information.
+            foreach (var opponent in opponents)
+            {
+                SendPlayerInfo(opponent);
+            }
         }
     }
 }

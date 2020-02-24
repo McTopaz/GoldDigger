@@ -12,9 +12,10 @@ namespace GoldDigger.Mobile.ViewModels
     [AddINotifyPropertyChangedInterface]
     class vmJoinGameSummary : vmBase
     {
-        public ObservableCollection<PlayerInformation> Players { get; private set; } = new ObservableCollection<PlayerInformation>();
+        public ObservableCollection<PlayerInformation> Opponents { get; private set; } = new ObservableCollection<PlayerInformation>();
         public PlayerInformation Player { get; set; }
         public PlayerInformation Host { get; set; }
+        public Action<string, string, string> DisplayMessage;
 
         Guest Guest { get; set; }
 
@@ -27,6 +28,8 @@ namespace GoldDigger.Mobile.ViewModels
             Guest = new Guest(Player);
             Guest.HostInformation = HostInformation;
             Guest.RejectedByHost = Rejected;
+            Guest.LeavingHost = HostLeaving;
+            Guest.OpponentsUpdate = UpdateOpponents;
             base.BackButtonPressed = Guest.Leave;
         }
 
@@ -35,9 +38,25 @@ namespace GoldDigger.Mobile.ViewModels
             Host = Guest.Host;
         }
 
-        private void Rejected()
+        void Rejected()
         {
-            Navigation.PopModalAsync();
+            var title = $"Rejected";
+            var msg = $"The host choosed to exclude you from the game.";
+            DisplayAlert(title, msg);
+            App.Current.MainPage.Navigation.PopModalAsync();
+        }
+
+        void HostLeaving()
+        {
+            var title = $"Host is leaving";
+            var msg = $"The host choosed to stop the game.";
+            DisplayAlert(title, msg);
+            App.Current.MainPage.Navigation.PopModalAsync();
+        }
+
+        void UpdateOpponents(IEnumerable<PlayerInformation> opponents)
+        {
+            Opponents = new ObservableCollection<PlayerInformation>(opponents);
         }
     }
 }

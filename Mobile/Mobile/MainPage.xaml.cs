@@ -16,9 +16,6 @@ namespace GoldDigger.Mobile
         public MainPage()
         {
             InitializeComponent();
-
-            var vm = BindingContext as ViewModels.vmMainPage;
-            vm.Navigation = Navigation;
         }
     }
 }

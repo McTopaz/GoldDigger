@@ -8,14 +8,19 @@ namespace GoldDigger.Mobile.ViewModels
 {
     class vmBase
     {
-        public INavigation Navigation { get; set; }
         public Action BackButtonPressed { get; set; }
 
         public void ShowPage(ContentPage page)
         {
-            var vm = page.BindingContext as vmBase;
-            vm.Navigation = Navigation;
-            Navigation.PushModalAsync(page);
+            App.Current.MainPage.Navigation.PushModalAsync(page);
+        }
+
+        public void DisplayAlert(string title, string message, string cancel = "OK")
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await App.Current.MainPage.DisplayAlert(title, message, cancel);
+            });
         }
     }
 }

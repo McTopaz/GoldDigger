@@ -11,7 +11,7 @@ using GoldDigger.Common;
 
 namespace GoldDigger.Communications
 {
-    public abstract class Connection
+    public abstract partial class Connection
     {
         protected TcpClient Tcp { get; private set; }
         protected NetworkStream Stream { get; private set; }

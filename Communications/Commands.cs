@@ -10,7 +10,9 @@ namespace GoldDigger.Communications
         Information = 0x01,
         Rejected = 0x02,
         Start = 0x03,
-        Terminate = 0x04
+        Terminate = 0x04,
+        Leaving = 0x05,
+        Opponents = 0x06
     }
 
     public enum GuestCommands : byte

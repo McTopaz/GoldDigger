@@ -24,7 +24,7 @@ namespace GoldDiggerDesktop.ViewModels
             Back.Callback += Back_Callback;
         }
 
-        private void Back_Callback(object parameter = null)
+        protected virtual void Back_Callback(object parameter = null)
         {
             var view = new Views.HostGame();
             view.DataContext = base.Previously;

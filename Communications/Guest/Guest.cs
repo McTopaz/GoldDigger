@@ -14,6 +14,8 @@ namespace GoldDigger.Communications
     {
         public Action HostInformation;
         public Action RejectedByHost;
+        public Action LeavingHost;
+        public Action<IEnumerable<PlayerInformation>> OpponentsUpdate;
 
         public Guest(PlayerInformation player) : base(typeof(HostCommands), player)
         {
@@ -21,6 +23,8 @@ namespace GoldDigger.Communications
             Commands.Add(HostCommands.Information, (ReceiveHostInformation, true));
             Commands.Add(HostCommands.Rejected, (Rejected, false));
             Commands.Add(HostCommands.Terminate, (Terminate, false));
+            Commands.Add(HostCommands.Leaving, (HostLeaving, false));
+            Commands.Add(HostCommands.Opponents, (UpdateOpponents, true));
             Thread.Sleep(500);
             SendGuestInformation();
         }

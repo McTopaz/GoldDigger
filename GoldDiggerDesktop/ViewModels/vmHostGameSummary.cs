@@ -38,22 +38,20 @@ namespace GoldDiggerDesktop.ViewModels
             Host.StartGame();
         }
 
+        protected override void Back_Callback(object parameter = null)
+        {
+            Host.Leaving();
+            base.Back_Callback(parameter);
+        }
+
         private void GuestHasJoined(Opponent player)
         {
             Opponents.Add(player);
-            player.Remove.Callback += RemovePlayer;
         }
 
         private void GuestHastLeft(Opponent player)
         {
             Opponents.Remove(player);
-            player.Remove.Callback -= RemovePlayer;
-        }
-
-        private void RemovePlayer(object parameter = null)
-        {
-            Opponents.Remove(Opponent);
-            Host.RejectGuest();
         }
     }
 }

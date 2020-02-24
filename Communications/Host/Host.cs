@@ -9,9 +9,10 @@ using GoldDigger.Common;
 
 namespace GoldDigger.Communications
 {
-    public class Host
+    public partial class Host
     {
         PlayerInformation HostInfo { get; set; }
+        List<Participant> Participants { get; set; } = new List<Participant>();
         
         public Action<Opponent> GuestHasJoined;
         public Action<Opponent> GuestHasLeft;
@@ -31,22 +32,18 @@ namespace GoldDigger.Communications
             {
                 var client = listner.AcceptTcpClient();
                 NewParticipant(client);
+                UpdateOpponents();
             }
         }
 
         void NewParticipant(TcpClient client)
         {
             var participant = new Participant(client, HostInfo);
+            Participants.Add(participant);
             GuestHasJoined(participant.Player as Opponent);
             participant.GuestHasLeft = GuestHasLeft;
         }
 
-        public void StartGame()
-        {
-        }
 
-        public void RejectGuest()
-        {
-        }
     }
 }

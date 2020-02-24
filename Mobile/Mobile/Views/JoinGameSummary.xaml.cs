@@ -16,6 +16,10 @@ namespace GoldDigger.Mobile.Views
         {
             InitializeComponent();
             Xamarin.Forms.DataGrid.DataGridComponent.Init();
+            //MessagingCenter.Subscribe<ViewModels.vmBase, string[]>(this, "DisplayAlert", (sender, values) => { DisplayAlert(values[0], values[1], "OK"); });
+
+            var vm = BindingContext as ViewModels.vmJoinGameSummary;
+            vm.DisplayMessage = Asdf;
         }
 
         protected override bool OnBackButtonPressed()
@@ -23,6 +27,15 @@ namespace GoldDigger.Mobile.Views
             var vm = BindingContext as ViewModels.vmJoinGameSummary;
             vm.BackButtonPressed();
             return base.OnBackButtonPressed();
+        }
+
+        private void Asdf(string title, string message, string cancel)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await DisplayAlert(title, message, cancel);
+            });
+
         }
     }
 }

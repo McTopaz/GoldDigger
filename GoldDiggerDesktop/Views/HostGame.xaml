@@ -26,7 +26,7 @@
 
     <Grid>
         <Rectangle Margin="10,10,0,0" Fill="DarkGray" RadiusX="8" RadiusY="8"/>
-        <Border Margin="4" BorderBrush="White" Background="SaddleBrown" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8">
+        <Border Margin="4" BorderBrush="White" Background="BlanchedAlmond" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8">
             <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
 
                 <!-- Title -->

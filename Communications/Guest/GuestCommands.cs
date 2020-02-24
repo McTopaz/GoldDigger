@@ -12,27 +12,14 @@ namespace GoldDigger.Communications
         void SendGuestInformation()
         {
             SendCommand(GuestCommands.Information);
-
-            var data = Player.ID.ToByteArray();
-            Stream.Write(data, 0, data.Length);
-
-            data = Constants.Encoding.GetBytes(Player.Name);
-            Stream.Write(data, 0, data.Length);
+            SendPlayerInfo(Player);
         }
 
         void ReceiveHostInformation()
         {
             try
             {
-                var data = new byte[16];
-                var num = Stream.Read(data, 0, data.Length);
-                var idData = data.Take(num).ToArray();
-                Host.ID = new Guid(idData);
-
-                data = new byte[1024];
-                num = Stream.Read(data, 0, data.Length);
-                var nameData = data.Take(num).ToArray();
-                Host.Name = Constants.Encoding.GetString(nameData);
+                ReceivePlayerInfo(Host);
             }
             catch (Exception e)
             {
@@ -63,6 +50,27 @@ namespace GoldDigger.Communications
         void Leaving()
         {
             SendCommand(GuestCommands.Leaving);
+        }
+
+        void HostLeaving()
+        {
+            Terminate();
+            LeavingHost();
+        }
+
+        void UpdateOpponents()
+        {
+            var num = Stream.ReadByte();
+            var opponents = new List<PlayerInformation>();
+
+            for (int i = 0; i < num; i++)
+            {
+                var opponent = new PlayerInformation();
+                ReceivePlayerInfo(opponent);
+                opponents.Add(opponent);
+            }
+
+            OpponentsUpdate(opponents);
         }
     }
 }

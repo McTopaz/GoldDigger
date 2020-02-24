@@ -22,7 +22,17 @@ namespace GoldDigger.Common
 
     public class Opponent : PlayerInformation
     {
-        public RelayCommand Remove { get; private set; } = new RelayCommand();
-        public RelayCommand<PlayerInformation> Rem { get; private set; } = new RelayCommand<PlayerInformation>();
+        public RelayCommand<Opponent> Remove { get; private set; } = new RelayCommand<Opponent>();
+        public Action Rejected;
+
+        public Opponent()
+        {
+            Remove.Callback += Remove_Callback;
+        }
+
+        private void Remove_Callback(Opponent parameter)
+        {
+            Rejected();
+        }
     }
 }
