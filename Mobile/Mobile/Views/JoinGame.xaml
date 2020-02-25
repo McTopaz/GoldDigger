@@ -6,6 +6,7 @@
              xmlns:vm="clr-namespace:GoldDigger.Mobile.ViewModels"
              xmlns:misc="clr-namespace:GoldDigger.Mobile.Misc"
              mc:Ignorable="d"
+             BackgroundColor="BlanchedAlmond"
              x:Class="GoldDigger.Mobile.Views.JoinGame">
 
     <ContentPage.BindingContext>

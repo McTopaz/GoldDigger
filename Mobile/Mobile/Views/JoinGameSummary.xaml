@@ -6,6 +6,7 @@
              xmlns:vm="clr-namespace:GoldDigger.Mobile.ViewModels"
              xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
              mc:Ignorable="d"
+             BackgroundColor="BlanchedAlmond"
              x:Class="GoldDigger.Mobile.Views.JoinGameSummary">
 
     <ContentPage.BindingContext>

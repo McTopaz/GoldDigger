@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:GoldDigger.Mobile.ViewModels"
              mc:Ignorable="d"
+             BackgroundColor="BlanchedAlmond"
              x:Class="GoldDigger.Mobile.MainPage">
 
     <ContentPage.BindingContext>
