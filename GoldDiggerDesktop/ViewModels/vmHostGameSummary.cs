@@ -21,8 +21,7 @@ namespace GoldDiggerDesktop.ViewModels
         public vmHostGameSummary()
         {
             System.Windows.Data.BindingOperations.EnableCollectionSynchronization(Opponents, lockObject);
-
-            Start.Enable = _ => Opponents.Count > 1;
+            Start.Enable = _ => Opponents.Count >= 1;
             Start.Callback += Start_Callback;
         }
 
