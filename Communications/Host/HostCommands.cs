@@ -16,8 +16,8 @@ namespace GoldDigger.Communications
 
         public void UpdateOpponents()
         {
-            // For each participant, get the other participants connected to the host.
-            // Select the participants´ information.
+            // For each participant, get the other participants (opponents) connected to the host.
+            // Select the opponents´ information.
             Participants.ForEach(p => p.UpdateOpponents(Participants.Where(o => o != p).Select(o => o.Player)));
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Threading;
 
 using GoldDigger.Common;
 
@@ -23,23 +24,27 @@ namespace GoldDigger.Communications
         private void Rejected()
         {
             SendCommand(HostCommands.Rejected);
+            Terminate();
         }
 
         public void Leaving()
         {
             Terminate();
-            GuestHasLeft(Player as Opponent);
         }
 
         public void Terminate()
         {
             SendCommand(HostCommands.Terminate);
             Disconnect();
+            GUI.RemoveParticipant(this);
         }
 
         public void HostLeaving()
         {
             SendCommand(HostCommands.Leaving);
+            Run = false;
+            Thread.Sleep(1000);
+            Disconnect();
         }
 
         public void UpdateOpponents(IEnumerable<PlayerInformation> opponents)

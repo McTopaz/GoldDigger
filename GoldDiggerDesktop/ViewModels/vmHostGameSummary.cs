@@ -30,7 +30,7 @@ namespace GoldDiggerDesktop.ViewModels
         {
             Host = new Host(Player);
             Host.GuestHasJoined = GuestHasJoined;
-            Host.GuestHasLeft = GuestHastLeft;
+            Host.RemoveGuest = GuestHastLeft;
         }
 
         private void Start_Callback(object parameter = null)
@@ -40,7 +40,7 @@ namespace GoldDiggerDesktop.ViewModels
 
         protected override void Back_Callback(object parameter = null)
         {
-            Host.Leaving();
+            Host.Terminate();
             base.Back_Callback(parameter);
         }
 

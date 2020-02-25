@@ -15,7 +15,6 @@ namespace GoldDigger.Mobile.ViewModels
         public ObservableCollection<PlayerInformation> Opponents { get; private set; } = new ObservableCollection<PlayerInformation>();
         public PlayerInformation Player { get; set; }
         public PlayerInformation Host { get; set; }
-        public Action<string, string, string> DisplayMessage;
 
         Guest Guest { get; set; }
 
@@ -26,10 +25,10 @@ namespace GoldDigger.Mobile.ViewModels
         public void SetupCommunication()
         {
             Guest = new Guest(Player);
-            Guest.HostInformation = HostInformation;
-            Guest.RejectedByHost = Rejected;
-            Guest.LeavingHost = HostLeaving;
-            Guest.OpponentsUpdate = UpdateOpponents;
+            Guest.GUI.HostInformation = HostInformation;
+            Guest.GUI.RejectedByHost = Rejected;
+            Guest.GUI.HostLeaving = HostLeaving;
+            Guest.GUI.OpponentsUpdate = UpdateOpponents;
             base.BackButtonPressed = Guest.Leave;
         }
 

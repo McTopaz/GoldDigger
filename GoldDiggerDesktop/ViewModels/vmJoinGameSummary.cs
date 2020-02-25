@@ -21,7 +21,7 @@ namespace GoldDiggerDesktop.ViewModels
         public void SetupGuest()
         {
             Guest = new Guest(Player);
-            Guest.RejectedByHost = Rejected;
+            Guest.GUI.RejectedByHost = Rejected;
         }
 
         private void Rejected()

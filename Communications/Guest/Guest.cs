@@ -12,10 +12,7 @@ namespace GoldDigger.Communications
 {
     public partial class Guest : Connection
     {
-        public Action HostInformation;
-        public Action RejectedByHost;
-        public Action LeavingHost;
-        public Action<IEnumerable<PlayerInformation>> OpponentsUpdate;
+        public GuestGUI GUI { get; private set; } = new GuestGUI();
 
         public Guest(PlayerInformation player) : base(typeof(HostCommands), player)
         {

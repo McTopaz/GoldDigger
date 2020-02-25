@@ -28,7 +28,7 @@ namespace GoldDigger.Communications
 
             try
             {
-                HostInformation();
+                GUI.HostInformation();
             }
             catch (Exception e)
             {
@@ -38,8 +38,7 @@ namespace GoldDigger.Communications
 
         void Rejected()
         {
-            Terminate();
-            RejectedByHost();
+            GUI.RejectedByHost();
         }
 
         void Terminate()
@@ -54,8 +53,7 @@ namespace GoldDigger.Communications
 
         void HostLeaving()
         {
-            Terminate();
-            LeavingHost();
+            GUI.HostLeaving();
         }
 
         void UpdateOpponents()
@@ -70,7 +68,7 @@ namespace GoldDigger.Communications
                 opponents.Add(opponent);
             }
 
-            OpponentsUpdate(opponents);
+            GUI.OpponentsUpdate(opponents);
         }
     }
 }

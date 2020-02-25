@@ -11,11 +11,13 @@ namespace GoldDigger.Communications
 {
     public partial class Host
     {
+        TcpListener Listner { get; set; }
+        bool Run { get; set; } = true;
         PlayerInformation HostInfo { get; set; }
         List<Participant> Participants { get; set; } = new List<Participant>();
         
         public Action<Opponent> GuestHasJoined;
-        public Action<Opponent> GuestHasLeft;
+        public Action<Opponent> RemoveGuest;
 
         public Host(PlayerInformation host)
         {
@@ -25,15 +27,16 @@ namespace GoldDigger.Communications
 
         void AcceptParticipant()
         {
-            var listner = new TcpListener(HostInfo.EndPoint);
-            listner.Start(Constants.MaxConnection);
+            Listner = new TcpListener(HostInfo.EndPoint);
+            Listner.Start(Constants.MaxConnection);
 
-            while (true)
+            while (Run)
             {
-                var client = listner.AcceptTcpClient();
+                var client = Listner.AcceptTcpClient(); // Crash after Listner.Stop() -> Exiting game.
                 NewParticipant(client);
                 UpdateOpponents();
             }
+            Console.WriteLine("");
         }
 
         void NewParticipant(TcpClient client)
@@ -41,9 +44,20 @@ namespace GoldDigger.Communications
             var participant = new Participant(client, HostInfo);
             Participants.Add(participant);
             GuestHasJoined(participant.Player as Opponent);
-            participant.GuestHasLeft = GuestHasLeft;
+            participant.GUI.RemoveParticipant = RemoveParticipant;
         }
 
+        void RemoveParticipant(Participant participant)
+        {
+            Participants.Remove(participant);
+            RemoveGuest(participant.Player as Opponent);
+        }
 
+        public void Terminate()
+        {
+            Run = false;
+            Listner.Stop();
+            Leaving();
+        }
     }
 }

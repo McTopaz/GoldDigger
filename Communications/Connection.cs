@@ -64,7 +64,7 @@ namespace GoldDigger.Communications
                 while (Run)
                 {
                     var data = new byte[1024];
-                    var num = Stream.Read(data, 0, data.Length);
+                    var num = Stream.Read(data, 0, data.Length);    // Crash after Disconnect() -> Excluding guest.
                     if (num == 1)
                     {
                         var code = data.ElementAt(0);
@@ -89,6 +89,7 @@ namespace GoldDigger.Communications
             Commands[command].Callback();
 
             // Signal if the receiver thread should continue.
+            // The run flag is invidueally set for each command.
             return Commands[command].Run;
         }
 

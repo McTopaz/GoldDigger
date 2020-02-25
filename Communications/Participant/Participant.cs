@@ -11,7 +11,7 @@ namespace GoldDigger.Communications
 {
     public partial class Participant : Connection
     {
-        public Action<Opponent> GuestHasLeft;
+        public ParticipantGUI GUI { get; private set; } = new ParticipantGUI();
 
         public Participant(TcpClient tcp, PlayerInformation host) : base (typeof(GuestCommands), tcp, host)
         {
