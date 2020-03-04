@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
-using GoldDigger.Common;
 using PropertyChanged;
 
 namespace GoldDigger.Mobile.ViewModels
@@ -11,15 +11,15 @@ namespace GoldDigger.Mobile.ViewModels
     [AddINotifyPropertyChangedInterface]
     class vmMainPage : vmBase
     {
-        public RelayCommand Host { get; private set; } = new RelayCommand();
-        public RelayCommand Join { get; private set; } = new RelayCommand();
-        public RelayCommand Exit { get; private set; } = new RelayCommand();
+        public ICommand Host { get; private set; }
+        public ICommand Join { get; private set; }
+        public ICommand Exit { get; private set; }
 
         public vmMainPage()
         {
-            Host.Callback += Host_Callback;
-            Join.Callback += Join_Callback;
-            Exit.Callback += Exit_Callback;
+            Host = new Command(Host_Callback);
+            Join = new Command(Join_Callback);
+            Exit = new Command(Exit_Callback);
         }
 
         private void Host_Callback(object parameter = null)
