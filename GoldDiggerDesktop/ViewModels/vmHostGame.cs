@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 
 using GoldDigger.Common;
+using GoldDiggerDesktop.Misc;
 
 namespace GoldDiggerDesktop.ViewModels
 {

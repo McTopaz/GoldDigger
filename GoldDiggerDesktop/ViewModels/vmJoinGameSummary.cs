@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 
 using PropertyChanged;
-using GoldDiggerDesktop.Misc;
 using GoldDigger.Communications;
 
 namespace GoldDiggerDesktop.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    class vmJoinGameSummary : vmMenu
+    class vmJoinGameSummary : vmSummary
     {
-        //Guest Guest { get; set; }
         Guest Guest;
 
         public vmJoinGameSummary()

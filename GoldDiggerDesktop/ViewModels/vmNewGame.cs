@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 using PropertyChanged;
-using GoldDigger.Common;
 using GoldDiggerDesktop.Misc;
 
 namespace GoldDiggerDesktop.ViewModels

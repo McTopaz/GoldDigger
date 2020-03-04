@@ -8,11 +8,12 @@ using System.Threading;
 using PropertyChanged;
 using GoldDigger.Common;
 using GoldDigger.Communications;
+using GoldDiggerDesktop.Misc;
 
 namespace GoldDiggerDesktop.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    class vmHostGameSummary : vmMenu
+    class vmHostGameSummary : vmSummary
     {
         object lockObject = new object();
         public RelayCommand Start { get; private set; } = new RelayCommand();
@@ -27,9 +28,11 @@ namespace GoldDiggerDesktop.ViewModels
 
         public void SetupHost()
         {
+            var rejectCommand = new RelayCommand();
+
             Host = new Host(Player);
-            Host.GuestHasJoined = GuestHasJoined;
-            Host.RemoveGuest = GuestHastLeft;
+            Host.GUI.OpponentHasJoined = AddOpponent;
+            Host.GUI.OpponentHasBeenRemoved = RemoveOpponent;
         }
 
         private void Start_Callback(object parameter = null)
@@ -43,14 +46,17 @@ namespace GoldDiggerDesktop.ViewModels
             base.Back_Callback(parameter);
         }
 
-        private void GuestHasJoined(Opponent player)
+        void AddOpponent(Opponent opponent)
         {
-            Opponents.Add(player);
+            Opponents.Add(opponent);
+            
+            var command = new RelayCommand();
+            var callback = Host.OpponentsRejectCallback(opponent);
         }
 
-        private void GuestHastLeft(Opponent player)
+        void RemoveOpponent(Opponent opponent)
         {
-            Opponents.Remove(player);
+            Opponents.Remove(opponent);
         }
     }
 }

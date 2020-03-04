@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Net.NetworkInformation;
 
 using GoldDigger.Common;
+using GoldDiggerDesktop.Misc;
 
 namespace GoldDiggerDesktop.ViewModels
 {

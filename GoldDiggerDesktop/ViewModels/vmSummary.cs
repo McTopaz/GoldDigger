@@ -7,19 +7,19 @@ using System.Net.Sockets;
 
 using PropertyChanged;
 using GoldDigger.Common;
+using GoldDiggerDesktop.Misc;
 
 namespace GoldDiggerDesktop.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    class vmMenu : vmBase
+    class vmSummary : vmBase
     {
         public ObservableCollection<PlayerInformation> Opponents { get; private set; } = new ObservableCollection<PlayerInformation>();
-        public PlayerInformation Opponent { get; set; }
         public PlayerInformation Player { get; set; }
 
         public RelayCommand Back { get; private set; } = new RelayCommand();
 
-        public vmMenu()
+        public vmSummary()
         {
             Back.Callback += Back_Callback;
         }
