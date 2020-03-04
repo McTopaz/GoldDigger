@@ -8,7 +8,7 @@ namespace GoldDigger.Communications
     {
         None = 0x00,
         Information = 0x01,
-        Rejected = 0x02,
+        Reject = 0x02,
         Start = 0x03,
         Terminate = 0x04,
         Leaving = 0x05,

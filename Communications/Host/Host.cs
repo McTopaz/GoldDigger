@@ -4,6 +4,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Linq;
 
 using GoldDigger.Common;
 
@@ -16,8 +17,7 @@ namespace GoldDigger.Communications
         PlayerInformation HostInfo { get; set; }
         List<Participant> Participants { get; set; } = new List<Participant>();
         
-        public Action<Opponent> GuestHasJoined;
-        public Action<Opponent> RemoveGuest;
+        public HostGUI GUI { get; private set; } = new HostGUI();
 
         public Host(PlayerInformation host)
         {
@@ -43,14 +43,14 @@ namespace GoldDigger.Communications
         {
             var participant = new Participant(client, HostInfo);
             Participants.Add(participant);
-            GuestHasJoined(participant.Player as Opponent);
+            GUI.OpponentHasJoined(participant.Player as Opponent);
             participant.GUI.RemoveParticipant = RemoveParticipant;
         }
 
         void RemoveParticipant(Participant participant)
         {
             Participants.Remove(participant);
-            RemoveGuest(participant.Player as Opponent);
+            GUI.OpponentHasBeenRemoved(participant.Player as Opponent);
         }
 
         public void Terminate()
@@ -58,6 +58,12 @@ namespace GoldDigger.Communications
             Run = false;
             Listner.Stop();
             Leaving();
+        }
+
+        public Action OpponentsRejectCallback(Opponent opponent)
+        {
+            var participant = Participants.Find(p => p.Player.ID == opponent.ID);
+            return participant.Reject;
         }
     }
 }

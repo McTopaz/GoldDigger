@@ -18,7 +18,7 @@ namespace GoldDigger.Communications
         {
             Commands.Add(HostCommands.None, (NoneCallback, true));
             Commands.Add(HostCommands.Information, (ReceiveHostInformation, true));
-            Commands.Add(HostCommands.Rejected, (Rejected, false));
+            Commands.Add(HostCommands.Reject, (Rejected, false));
             Commands.Add(HostCommands.Terminate, (Terminate, false));
             Commands.Add(HostCommands.Leaving, (HostLeaving, false));
             Commands.Add(HostCommands.Opponents, (UpdateOpponents, true));

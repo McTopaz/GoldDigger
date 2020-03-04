@@ -23,6 +23,7 @@ namespace GoldDigger.Communications
 
         public void StartGame()
         {
+            Listner.Stop();
         }
     }
 }

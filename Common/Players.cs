@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
+using System.Windows.Input;
 
 using PropertyChanged;
 
@@ -22,17 +23,10 @@ namespace GoldDigger.Common
 
     public class Opponent : PlayerInformation
     {
-        public RelayCommand<Opponent> Remove { get; private set; } = new RelayCommand<Opponent>();
-        public Action Rejected;
+        public ICommand Remove { get; set; }
 
         public Opponent()
         {
-            Remove.Callback += Remove_Callback;
-        }
-
-        private void Remove_Callback(Opponent parameter)
-        {
-            Rejected();
         }
     }
 }

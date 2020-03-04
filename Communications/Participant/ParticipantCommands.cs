@@ -21,9 +21,9 @@ namespace GoldDigger.Communications
             ReceivePlayerInfo(Player);
         }
 
-        private void Rejected()
+        public void Reject()
         {
-            SendCommand(HostCommands.Rejected);
+            SendCommand(HostCommands.Reject);
             Terminate();
         }
 
