@@ -7,10 +7,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\Deck.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\FourPlayers.xaml.cs">
+    <Compile Update="Views\GameBoard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\JoinGameSummary.xaml.cs">
@@ -25,16 +22,16 @@
     <Compile Update="Views\HostGame.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\LowerPlayerArea.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\NewGame.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ThreePlayers.xaml.cs">
+    <Compile Update="Views\OpponentBoard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\TwoPlayers.xaml.cs">
+    <Compile Update="Views\PlayerBoard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Talon.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Version.xaml.cs">
@@ -45,10 +42,7 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Deck.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\FourPlayers.xaml">
+    <Page Update="Views\GameBoard.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\JoinGameSummary.xaml">
@@ -63,16 +57,16 @@
     <Page Update="Views\HostGame.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\LowerPlayerArea.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Views\NewGame.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ThreePlayers.xaml">
+    <Page Update="Views\OpponentBoard.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\TwoPlayers.xaml">
+    <Page Update="Views\PlayerBoard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Talon.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Version.xaml">

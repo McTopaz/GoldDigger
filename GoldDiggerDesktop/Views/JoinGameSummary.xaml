@@ -15,7 +15,6 @@
     </UserControl.DataContext>
 
     <UserControl.Resources>
-        <misc:StreamToImage x:Key="StreamToImage" />
         <Style TargetType="Control" x:Key="HeaderStyle">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="FontWeight" Value="Bold" />

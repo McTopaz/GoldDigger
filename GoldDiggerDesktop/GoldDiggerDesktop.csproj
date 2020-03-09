@@ -27,6 +27,7 @@
     <None Remove="Images\Network16.png" />
     <None Remove="Images\NetworkCard128.png" />
     <None Remove="Images\Port32.png" />
+    <None Remove="Images\Star64.png" />
     <None Remove="Images\Tag64.png" />
     <None Remove="Images\Type64.png" />
     <None Remove="Images\User24.png" />
@@ -60,10 +61,15 @@
     <Resource Include="Images\Network16.png" />
     <Resource Include="Images\NetworkCard128.png" />
     <Resource Include="Images\Port32.png" />
+    <Resource Include="Images\Star64.png" />
     <Resource Include="Images\Tag64.png" />
     <Resource Include="Images\Type64.png" />
     <Resource Include="Images\User24.png" />
     <Resource Include="Images\UserRemove24.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\Cards\" />
   </ItemGroup>
 
 </Project>

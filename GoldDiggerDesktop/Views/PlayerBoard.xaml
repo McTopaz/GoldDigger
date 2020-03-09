@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="GoldDiggerDesktop.Views.PlayerBoard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GoldDiggerDesktop.Views"
+             xmlns:vm="clr-namespace:GoldDiggerDesktop.ViewModels"
+             xmlns:controls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <vm:vmPlayerBoard />
+    </UserControl.DataContext>
+
+    <Grid>
+        <Border Margin="4" BorderBrush="White" Background="Gold" BorderThickness="4" CornerRadius="8">
+
+            <StackPanel Orientation="Vertical" Margin="6">
+
+                <!-- Selected card -->
+                <Border DockPanel.Dock="Left" Margin="6" Background="Orange" BorderBrush="White" BorderThickness="3" CornerRadius="8,8,8,8" Width="100">
+                    <Image Source="/GoldDiggerDesktop;component/Images/Card128.png" />
+                </Border>
+
+                <Separator Height="12" Visibility="Hidden" />
+
+                <!-- Cards in hand and stash -->
+                <DockPanel LastChildFill="True" Height="150">
+
+                    <DockPanel.Resources>
+                        <controls:BooleanToVisibilityConverter x:Key="BoolToVis" />
+                    </DockPanel.Resources>
+
+                    <Border Margin="6" BorderBrush="White" BorderThickness="3" CornerRadius="8" DockPanel.Dock="Left">
+                        <StackPanel Orientation="Horizontal">
+                            
+                            <!-- Hand card 1 -->
+                            <Button Command="{Binding HandCard1.Clicked}"  Margin="12" Background="Transparent" BorderThickness="0">
+                                <Button.Content>
+                                    <Image Source="/GoldDiggerDesktop;component/Images/Cards/Backside.png" Height="100" />
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Stash pile-->
+                    <Image Source="/GoldDiggerDesktop;component/Images/Cards128.png" DockPanel.Dock="Right" Margin="6" />
+
+                    <Separator Visibility="Hidden" />
+
+                </DockPanel>
+
+                <Separator Height="12" Visibility="Hidden" />
+
+                <!-- Name and points -->
+                <DockPanel LastChildFill="True">
+
+                    <!-- Name -->
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Margin="12,6,6,6">
+                        <Image Source="/GoldDiggerDesktop;component/Images/USer24.png" Height="24" VerticalAlignment="Center" />
+                        <Label Content="{Binding Name}" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" />
+                    </StackPanel>
+
+                    <!-- Points -->
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Margin="6,6,12,6">
+                        <Image Source="/GoldDiggerDesktop;component/Images/Star64.png" Height="32" VerticalAlignment="Center" />
+                        <Label Content="{Binding Points}" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" />
+                    </StackPanel>
+
+                    <Separator Visibility="Hidden" />
+                </DockPanel>
+
+                <Separator Height="12" Visibility="Hidden" />
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
