@@ -32,20 +32,20 @@
                         <controls:BooleanToVisibilityConverter x:Key="BoolToVis" />
                     </DockPanel.Resources>
 
-                    <Border Margin="6" BorderBrush="White" BorderThickness="3" CornerRadius="8" DockPanel.Dock="Left">
+                    <Border Margin="6" BorderBrush="White" BorderThickness="3" CornerRadius="8" DockPanel.Dock="Left" Height="125">
                         <StackPanel Orientation="Horizontal">
                             
                             <!-- Hand card 1 -->
                             <Button Command="{Binding HandCard1.Clicked}"  Margin="12" Background="Transparent" BorderThickness="0">
                                 <Button.Content>
-                                    <Image Source="/GoldDiggerDesktop;component/Images/Cards/Backside.png" Height="100" />
+                                    <Image Source="/GoldDiggerDesktop;component/Images/Cards/Backside.png" Height="90" />
                                 </Button.Content>
                             </Button>
                         </StackPanel>
                     </Border>
 
                     <!-- Stash pile-->
-                    <Image Source="/GoldDiggerDesktop;component/Images/Cards128.png" DockPanel.Dock="Right" Margin="6" />
+                    <Image Source="/GoldDiggerDesktop;component/Images/Cards128.png" DockPanel.Dock="Right" Margin="6" Height="90" />
 
                     <Separator Visibility="Hidden" />
 

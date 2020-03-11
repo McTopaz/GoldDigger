@@ -14,10 +14,10 @@
     
     <Grid>
         <Border Margin="4" BorderBrush="White" Background="Red" BorderThickness="4" CornerRadius="8">
-            <Border Margin="6" Background="White" BorderBrush="White" BorderThickness="3" CornerRadius="8" HorizontalAlignment="Center">
+            <Border Margin="6" Background="White" BorderBrush="White" BorderThickness="3" CornerRadius="8" HorizontalAlignment="Center" Height="125">
                 <StackPanel Orientation="Horizontal">
                     <Separator Width="3" Visibility="Hidden" />
-                    <Image Source="/GoldDiggerDesktop;component/Images/Cards/Backside.png" Height="80" />
+                    <Image Source="/GoldDiggerDesktop;component/Images/Cards/Backside.png" />
                     <Separator Width="3" Visibility="Hidden" />
                 </StackPanel>
             </Border>

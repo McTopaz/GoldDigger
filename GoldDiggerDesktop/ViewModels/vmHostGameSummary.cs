@@ -38,6 +38,11 @@ namespace GoldDiggerDesktop.ViewModels
         private void Start_Callback(object parameter = null)
         {
             Host.StartGame();
+
+            var view = new Views.GameBoard();
+            var vm = view.DataContext as vmGameBoard;
+
+            ShowContent(view);
         }
 
         protected override void Back_Callback(object parameter = null)

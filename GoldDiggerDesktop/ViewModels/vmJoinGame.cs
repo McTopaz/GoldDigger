@@ -18,6 +18,9 @@ namespace GoldDiggerDesktop.ViewModels
 
         public vmJoinGame()
         {
+            Name = Environment.UserName;
+            IpAddress = IPAddress.Parse("192.168.8.105");
+            Port = Constants.ConnectPort;
             Join.Callback += Join_Callback;
         }
 
@@ -25,15 +28,14 @@ namespace GoldDiggerDesktop.ViewModels
         {
             var view = new Views.JoinGameSummary();
             var vm = view.DataContext as vmJoinGameSummary;
-            var endPoint = new IPEndPoint(IpAddress, Port);
 
             vm.Previously = this;
             vm.Player = new PlayerInformation()
             {
-                EndPoint = new IPEndPoint(IpAddress, Port),
-                Name = Name
+                Name = Name,
+                EndPoint = new IPEndPoint(IpAddress, Port)
             };
-            vm.SetupGuest();
+            vm.SetupCommunications();
 
             ShowContent(view);
         }

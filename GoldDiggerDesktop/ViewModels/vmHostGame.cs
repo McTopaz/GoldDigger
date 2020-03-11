@@ -15,6 +15,8 @@ namespace GoldDiggerDesktop.ViewModels
 
         public vmHostGame()
         {
+            Name = Environment.UserName;
+            Port = Constants.ConnectPort;
             Host.Callback += Host_Callback;
         }
 

@@ -41,7 +41,7 @@
                 <Separator Height="12" Visibility="Hidden" />
 
                 <!-- Cards in hand and stash -->
-                <DockPanel LastChildFill="True" Height="80">
+                <DockPanel LastChildFill="True" Height="125">
 
                     <DockPanel.Resources>
                         <controls:BooleanToVisibilityConverter x:Key="BoolToVis" />

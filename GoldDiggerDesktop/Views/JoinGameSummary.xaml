@@ -105,12 +105,12 @@
                         <!-- Name -->
                         <Image Source="/GoldDiggerDesktop;component/Images/Tag64.png" Height="24" Grid.Column="0" />
                         <Label Content="Name" Style="{StaticResource FontStyle}" Grid.Column="1" />
-                        <Label Content="{Binding Guest.Name}" Style="{StaticResource FontStyle}" Grid.Column="2" />
+                        <Label Content="{Binding Player.Name}" Style="{StaticResource FontStyle}" Grid.Column="2" />
 
                         <!-- IP-address -->
                         <Image Source="/GoldDiggerDesktop;component/Images/IpAddress32.png" Height="24" Grid.Column="3" />
                         <Label Content="IP-address" Style="{StaticResource FontStyle}" Grid.Column="4" />
-                        <Label Content="{Binding Guest.EndPoint.Address}" Style="{StaticResource FontStyle}" Grid.Column="5" />
+                        <Label Content="{Binding Player.EndPoint.Address}" Style="{StaticResource FontStyle}" Grid.Column="5" />
                     </Grid>
                 </GroupBox>
                 

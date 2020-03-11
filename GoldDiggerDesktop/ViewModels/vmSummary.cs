@@ -14,7 +14,7 @@ namespace GoldDiggerDesktop.ViewModels
     [AddINotifyPropertyChangedInterface]
     class vmSummary : vmBase
     {
-        public ObservableCollection<PlayerInformation> Opponents { get; private set; } = new ObservableCollection<PlayerInformation>();
+        public ObservableCollection<PlayerInformation> Opponents { get; protected set; } = new ObservableCollection<PlayerInformation>();
         public PlayerInformation Player { get; set; }
 
         public RelayCommand Back { get; private set; } = new RelayCommand();

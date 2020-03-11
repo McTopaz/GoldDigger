@@ -15,8 +15,8 @@ namespace GoldDiggerDesktop.ViewModels
     {
         public IEnumerable<IPAddress> NetworkCards { get; private set; }
         public IPAddress IpAddress { get; set; }
-        public int Port { get; set; } = 0xBABE;
-        public string Name { get; set; } = Environment.MachineName;
+        public int Port { get; set; }
+        public string Name { get; set; }
 
         public RelayCommand Back { get; private set; } = new RelayCommand();
 
