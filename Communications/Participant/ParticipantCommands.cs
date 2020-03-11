@@ -61,5 +61,16 @@ namespace GoldDigger.Communications
                 SendPlayerInfo(opponent);
             }
         }
+
+        public void FullGame()
+        {
+            SendCommand(HostCommands.FullGame);
+            Disconnect();
+        }
+
+        public void Start()
+        {
+            SendCommand(HostCommands.Start);
+        }
     }
 }

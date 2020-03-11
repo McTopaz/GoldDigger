@@ -22,6 +22,8 @@ namespace GoldDigger.Communications
             Commands.Add(HostCommands.Terminate, (Terminate, false));
             Commands.Add(HostCommands.Leaving, (HostLeaving, false));
             Commands.Add(HostCommands.Opponents, (UpdateOpponents, true));
+            Commands.Add(HostCommands.FullGame, (FullGame, false));
+            Commands.Add(HostCommands.Start, (Start, true));
             Thread.Sleep(500);
             SendGuestInformation();
         }

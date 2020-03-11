@@ -19,7 +19,7 @@ namespace GoldDigger.Communications
         
         public HostGUI GUI { get; private set; } = new HostGUI();
 
-        public Host(PlayerInformation host)
+        public Host(PlayerInformation host) 
         {
             HostInfo = host;
             new Thread(AcceptParticipant).Start();
@@ -28,7 +28,7 @@ namespace GoldDigger.Communications
         void AcceptParticipant()
         {
             Listner = new TcpListener(HostInfo.EndPoint);
-            Listner.Start(Constants.MaxConnection);
+            Listner.Start();
 
             while (Run)
             {
@@ -42,6 +42,14 @@ namespace GoldDigger.Communications
         void NewParticipant(TcpClient client)
         {
             var participant = new Participant(client, HostInfo);
+
+            if (Participants.Count >= Constants.MaxConnection)
+            {
+                participant.FullGame();
+                
+                return;
+            }
+
             Participants.Add(participant);
             GUI.OpponentHasJoined(participant.Player as Opponent);
             participant.GUI.RemoveParticipant = RemoveParticipant;

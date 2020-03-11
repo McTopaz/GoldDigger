@@ -25,5 +25,10 @@ namespace GoldDigger.Communications
         /// Update with the opponents.
         /// </summary>
         public Action<IEnumerable<PlayerInformation>> OpponentsUpdate;
+        /// <summary>
+        /// The game is full and the guest cannot join.
+        /// </summary>
+        public Action FullGame;
+        public Action StartGame;
     }
 }

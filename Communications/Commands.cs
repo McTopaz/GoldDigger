@@ -12,7 +12,8 @@ namespace GoldDigger.Communications
         Start = 0x03,
         Terminate = 0x04,
         Leaving = 0x05,
-        Opponents = 0x06
+        Opponents = 0x06,
+        FullGame = 0x07
     }
 
     public enum GuestCommands : byte

@@ -70,5 +70,16 @@ namespace GoldDigger.Communications
 
             GUI.OpponentsUpdate(opponents);
         }
+
+        void FullGame()
+        {
+            GUI.FullGame();
+            Disconnect();
+        }
+
+        void Start()
+        {
+            GUI.StartGame();
+        }
     }
 }

@@ -24,6 +24,7 @@ namespace GoldDigger.Communications
         public void StartGame()
         {
             Listner.Stop();
+            Participants.ForEach(p => p.Start());
         }
     }
 }

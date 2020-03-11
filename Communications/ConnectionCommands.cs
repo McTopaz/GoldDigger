@@ -14,7 +14,8 @@ namespace GoldDigger.Communications
             var data = player.ID.ToByteArray();
             Stream.Write(data, 0, data.Length);
 
-            data = Constants.Encoding.GetBytes(player.Name);
+            var name = player.Name;
+            data = Constants.Encoding.GetBytes(name);
             Stream.Write(data, 0, data.Length);
         }
 
