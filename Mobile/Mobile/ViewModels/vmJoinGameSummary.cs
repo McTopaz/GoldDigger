@@ -29,6 +29,7 @@ namespace GoldDigger.Mobile.ViewModels
             Guest.GUI.RejectedByHost = Rejected;
             Guest.GUI.HostLeaving = HostLeaving;
             Guest.GUI.OpponentsUpdate = UpdateOpponents;
+            Guest.GUI.FullGame = FullGame;
             base.BackButtonPressed = Guest.Leave;
         }
 
@@ -56,6 +57,14 @@ namespace GoldDigger.Mobile.ViewModels
         void UpdateOpponents(IEnumerable<PlayerInformation> opponents)
         {
             Opponents = new ObservableCollection<PlayerInformation>(opponents);
+        }
+
+        void FullGame()
+        {
+            var title = $"Game is full";
+            var msg = $"The game cannot host more players.";
+            DisplayAlert(title, msg);
+            App.Current.MainPage.Navigation.PopModalAsync();
         }
     }
 }
